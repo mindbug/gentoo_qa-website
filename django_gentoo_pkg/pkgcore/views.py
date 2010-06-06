@@ -19,7 +19,7 @@ def path(request):
     # This view should parse the url and return a page that
     # is rendered from searching the packages with the full
     # name matching the url. For example, the url 
-    # http://gentoo_qa_website/pkgcore/dev-python/snakeoil/
+    # http://gentoo-pkg/pkgcore/dev-python/snakeoil/
     # would render a view just as if the string
     # dev-python/snakeoil, or , just snakeoil,
     # had been entered in the index (search) View above.

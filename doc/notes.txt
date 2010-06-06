@@ -1,0 +1,25 @@
+#### Communication ####
+* Daily meetings on IRC
+* Weekly reports to the Gentoo-SoC mailing list
+
+* ferringb is GMT-7
+
+IRC channels
+#gentoo-soc
+#pkgcore
+#gentoo-dev
+#gentoo-python
+#django
+#python
+####
+
+snakeoil.pickling.iter_stream
+
+pkgcore_checks.base.Result
+pkgcore_checks.*.Result
+
+#### Website ####
+URLconf is ...
+pkgcore/ = form for searching -- serves a form (and a list of directories)
+pkgcore/dev-util/ = lists the atoms/packages inside dir --serves a list of atom names
+pkgcore/dev-util/diffball = details for diffball (bookmarkable for easy re-visitations by users)

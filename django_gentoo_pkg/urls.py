@@ -4,12 +4,12 @@ from django.conf.urls.defaults import *
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('gentoo_qa_website.pkgcore.views',
+urlpatterns = patterns('django_gentoo_pkg.pkgcore.views',
     (r'^pkgcore/$', 'index'),
     (r'^pkgcore/results/$', 'results'),
     (r'^pkgcore/path/$', 'path'),
     # Example:
-    # (r'^gentoo_qa_website/', include('gentoo_qa_website.foo.urls')),
+    # (r'^django_gentoo_pkg/', include('django_gentoo_pkg.foo.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

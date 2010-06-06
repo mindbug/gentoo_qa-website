@@ -1,0 +1,12 @@
+communication
+    sign up to the gentoo-soc mailing list
+
+write data importation (digest into db) script
+    play with pkgcore
+        pkgcore_checks.base.Result
+        pkgcore_checks.*.Result
+    learn more Python pickling
+        snakeoil.pickling.iter_stream
+    irssi
+        no login messages plx
+        theme
