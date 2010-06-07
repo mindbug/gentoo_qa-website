@@ -1,0 +1,50 @@
+Name: John-Patrik
+IRC: <mindbug>
+email: themindbug@gmail.com
+
+Gentoo x86 QA website - Weekly report #1
+========================================
+
+==== Project ====
+
+The project goal is to provide a web interface to QA data for the x86 architecture, similar to packages.gentoo.org. 
+
+The website will use the Django framework and will interface with the pkgcore package management system.
+
+==== Project parts ====
+
+* Python data importation to feed the framework.
+* Database. (Why? Redundant? Cache?)
+* Web interface.
+
+==== Done, this week ====
+
+* Github hosting setup, but no commits yet.
+* Django project environment setup.
+* Rough sketch of the url configuration. (subject to changes)
+    http://the_project/ -> points to index.html, a search form.
+    http://the_project/results/ -> points to a page displaying the results from a search.
+    http://the_project/package/dev-util/ -> list of the packages in /dev/util/.
+    http://the_project/package/dev-util/diffball -> the package versions and their details.
+* Started on the Python data importation script, not done though.
+
+==== Not done, plans for next week ====
+
+* List with concrete tasks for the project, which preferably change and evolve during the project timeframe.
+* Python pkgcore script.
+    The purpose of the script is to provide the web interface with the data from pkgcore via a MySQL database.
+    Will take pkgcore (snakeoil) Python pickle stream as input, and produce SQL output, which then ideally would be used together with a MySQL db which the website can import data from.
+    Doubts: Can I justify using a database? Well, It will be easier to re-use the website for other package managers, if using a database, since the database would remain the same no matter from which package manager the data came from. But still, the Agile manifesto says that not to implement something until it is needed, and it might not be.
+* Connect the script to an MySQL database, and test it.
+
+==== Evaluation(self) ====
+
+Thinking too much. Not been "Agile" enough: Too much planning. Too few lines of code produced.
+
+Read/learned a lot though. Have been a bit active on the #pkgcore channel, tried to get assimilated, is good.
+
+Must have some concrete Python code monday or tuesday.
+
+Looking forward to next week!
+
+Feel free to chat/email me and come with suggestions and/or constructive critizism, or just chat for the sake of chatting. :)
