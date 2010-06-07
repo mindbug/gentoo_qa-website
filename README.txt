@@ -1,6 +1,3 @@
-====  Last edited  ====
-    2010-06-07
-
 ====  Project info  ====
     Project Name: Gentoo x86 QA-website
     Project Info: Google Summer of Code 2010 project
@@ -8,21 +5,31 @@
     IRC nick: mindbug
     email: themindbug@gmail.com
 
+==== Abstract ====
+    The Gentoo x86 QA-website project aims to provide an interactive web interface to the pkgcore package management system (PMS).
+    The data is QA data.
+    The end-user is developers of the Gentoo x86 architecture.
+    Secondary objectives include making the project able to use other PMSes and output formats.
+
 ====  Top-level design  ====
     The project is divided into two parts: 
         A website interface.
             Files: django_gentoo_pkg/*
         A data provider centered around the pkgcore PMS.
-            Files: pkgcore_digester/*
+            Files: constrictor/*
 
 ====  The website interface  ====
-    Read django_gentoo_pkg/README.txt for more info.
     Uses the Django framework.
     Uses AJAX where possible.
     Uses CSS where possible.
-    Will provide the best and freshest QA data to developers ever seen.
-    Will look stunning and designy.
 
 ====  The Python data digester  ====
-    Read pkgcore_digester/README.txt for more info.
     Prepares data about ebuild atoms (well, about the entire repository really) from pkgcore, so that the web framework can use this data and present that to the users.
+
+==== Files ====
+    README.txt --  this file.
+    doc/design.txt -- the project design document.
+    doc/task_list.txt -- document which aims to divide the project into manageable tasks.
+    doc/reports/* -- the weekly reports which are sent to the gentoo-soc mailing list.
+    constrictor/* -- files which belong to the Python data importation sub-project, called constrictor.
+    django_gentoo_pkg/* -- files which belong to the interactive web interface sub-project, it doesn't have a cool name yet.
