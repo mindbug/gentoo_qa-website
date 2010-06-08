@@ -3,3 +3,5 @@
 *.db
 *.sqlite
 *.sqlite3
+django_gentoo_pkg/settings.py
+django_gentoo_pkg/db.sqlite3
