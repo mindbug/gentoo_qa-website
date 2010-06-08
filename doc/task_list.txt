@@ -1,1 +1,31 @@
 ==== Task list ====
+    * Create Git project.
+    - Subscribe to gentoo-dev mailing list.
+    * Create a blog.
+        * Create a category like gentoo-soc, profit.
+    * Create a bugzilla account.
+    * Read planet.gentoo.org via rss reader.
+    * Contact robbat2@g.o. about shell access, provide ssh key.
+    * Tell Brian. (mail preferably)
+    * Ask Brian if I need Trac, if so, contact patrick@g.o.
+    * Do some work on the web interface each day, to get a sense of productiveness.
+
+==== django_gentoo_pkg ====
+    * Django Model for the database.
+        * Write down which data needs to be gathered from the ebuild API.
+        * Translate the fields into Django Model Python, and write the class.
+
+    * MySQL interaction.
+        * Output the MySQL syntax for creating the database.
+        * Create the database.
+
+    * Testing.
+        * Input QA data about a random package manually.
+        * Test the website.
+
+==== Python Constrictor ====
+    * Write a Python script to load pkgcore data into a MySQL database.
+        * What gets returned while doing the for loop in my example code, when printing the whole '/usr/portage' repo. Can I manipulate those object? Get QA info? Use that for loop to stuff into db?
+        * Write a python script to use pkgcore-checks to do something, just for the fun of it. :)
+        * Write a Python script which uses pkgcore-checks to output QA info as pickles (Python objects as bytestream).
+        * Extend the script above to store the output in a file.

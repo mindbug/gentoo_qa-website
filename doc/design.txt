@@ -1,1 +1,18 @@
 ==== The design doc ====
+    * Clear separation from the interface and the Python script.
+    * The interface draws information from a database.
+    * The database is loaded by the Python script in sub-project Constrictor.
+
+==== Python Constrictor ====
+    * The web interface demands data about a package.
+
+==== The database ====
+    The database will be used to function as a cache for the web service, because queries to such a database is faster and lighter than using pkgcore or any other PMS directly. (This needs confirmation though.)
+
+    With database:
+        Django works out-of-the-box.
+        The Python script will be responsible for loading and syncing the database.
+
+    Without database:
+        Django must be configured to query pkgcore.
+        Searches will probably be slow.
