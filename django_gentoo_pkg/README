@@ -1,0 +1,12 @@
+====  Project info  ====
+Project Name: Gentoo x86 QA-website
+Project Info: Google Summer of Code 2010 project
+Maintainer: John-Patrik Nilsson
+IRC nick: mindbug
+    #gentoo-soc, #gentoo-dev, #pkgcore
+email: themindbug@gmail.com
+
+==== Notes ====
+Uses the Django framework.
+Uses AJAX where possible.
+Uses CSS where possible.
