@@ -1,12 +1,12 @@
 ==== Task list ====
-    * Create Git project.
-    - Subscribe to gentoo-dev mailing list.
+    X Create Git project.
+    X Subscribe to gentoo-dev mailing list.
     * Create a blog.
         * Create a category like gentoo-soc, profit.
-    * Create a bugzilla account.
+    X Create a bugzilla account.
     * Read planet.gentoo.org via rss reader.
     * Contact robbat2@g.o. about shell access, provide ssh key.
-    * Tell Brian. (mail preferably)
+    X Tell Brian. (mail preferably)
     * Ask Brian if I need Trac, if so, contact patrick@g.o.
     * Do some work on the web interface each day, to get a sense of productiveness.
 

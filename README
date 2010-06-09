@@ -1,7 +1,7 @@
 ====  Project info  ====
     Project Name: Gentoo x86 QA-website
     Project Info: Google Summer of Code 2010 project
-    Student Name: John-Patrik Nilsson
+    Maintainer: John-Patrik Nilsson
     IRC nick: mindbug
     email: themindbug@gmail.com
 
@@ -27,7 +27,7 @@
     Prepares data about ebuild atoms (well, about the entire repository really) from pkgcore, so that the web framework can use this data and present that to the users.
 
 ==== Files ====
-    README.txt --  this file.
+    README --  this file.
     doc/design.txt -- the project design document.
     doc/task_list.txt -- document which aims to divide the project into manageable tasks.
     doc/reports/* -- the weekly reports which are sent to the gentoo-soc mailing list.
