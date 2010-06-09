@@ -1,0 +1,49 @@
+==== Classes ====
+pkgcore_checks.base.Result (well, the results from the checks, go figure)
+	long_desc
+	short_desc
+pkgcore_checks.*.Result 
+
+pkgcore_checks.base.Reporter (uses results and reports to somewhere)
+pkgcore_checks.reporters
+
+pkgcore.restrictions.packages.PackageRestriction (use for itermatch)
+
+type() sez repo (see below) is of Class pkgcore.ebuild.repository.UnconfiguredTree
+
+iterating repo gets you something of Class pkgcore.ebuild.ebuild_src.package 
+
+==== Notes ====
+from pkgcore.config import load_config
+repo = load_config().repo['/usr/portage']
+repo contains instances of pkgcore.ebuild.ebuild_src objects!
+
+pcheck -> pickled stream of Result-objects -> Reporter
+
+==== Moar notes ====
+pkg.* is not strings, but do str() on them
+
+reporter outputs pcheck in different formats
+
+from snakeoil.pickling import iter_stream
+my_reports = list(iter_stream(open("that-stdout-filename")))
+my_reports[0]
+my_reports[1]
+...
+
+pcheck -r $PORTDIR '*' --reporter BinaryPickleStream > qa-results.pcheck
+
+from snakeoil.pickling import iter_stream
+my_checks = list(iter_stream(open("qa-results.pcheck")))
+print my_checks[0]
+print my_checks[1]
+dir(my_checks[0])
+
+==== Pseudo code ====
+get a list and iter_stream from the pcheck BinaryPickleStream-file
+for all in list:
+	name
+	path
+	version
+	reason for marking (in the Class instance name as well)
+	reason for marking - description
