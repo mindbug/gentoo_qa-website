@@ -23,8 +23,8 @@ from snakeoil.pickling import iter_stream
 # Make all attribute names Pythonic.
 #
 # Change and copy the result items so that the rows which are put out does
-# not have more than one version. This means that not two rows have an 
-# identical combination of category, package, and version.
+# not have more than one version. This means that not two rows should have 
+# an identical combination of category, package, and version.
 
 def digest_to_stdout(picklefile):
     """ digest_to_stdout(filename): Formats and organizes the pcheck result 
@@ -59,7 +59,7 @@ def _load_pickles(file):
 
 
 def _format_result(result_obj):
-    """ format_result(result_obj): returns a dictionary with 
+    """ _format_result(result_obj): returns a dictionary with 
         pcheck info as strings.
     """
     try:
