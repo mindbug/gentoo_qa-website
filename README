@@ -1,39 +1,58 @@
-====  Project info  ====
+####  Project info  ####
 Project Name: Gentoo x86 QA-website
 Project Info: Google Summer of Code 2010 project
 Maintainer: John-Patrik Nilsson
-IRC nick: mindbug
-    #gentoo-soc, #gentoo-dev, #pkgcore
-email: themindbug@gmail.com
+    IRC: <mindbug> @ #gentoo-soc #gentoo-dev #pkgcore
+    email: themindbug@gmail.com
 
-==== Abstract ====
-The Gentoo x86 QA-website project aims to provide an interactive web interface to the pkgcore package management system (PMS).
-The data is QA data.
- The end-user is developers of the Gentoo x86 architecture.
- Secondary objectives include making the project able to use other PMSes and output formats, and to provide ebuild metadata as well as QA data.
 
-====  Top-level design  ====
+#### Abstract ####
+The Gentoo x86 QA-website project aims to provide an interactive web interface to the QA-capabilities of the pkgcore package management system (PMS). Simply put, it will provide access to pkgcore-checks output.
+
+The end-user is developers of the Gentoo x86 architecture.
+
+Secondary objectives include making the project able to use other PMSes and output formats, and to provide ebuild metadata as well as QA data.
+
+
+####  Top-level design  ####
 This project consists of two stand-alone sub-projects, these are:
     The website interface: A Django web application.
-    The data importer: A Python package which imports QA data from the pkgcore PMS.
+    The data importer: A Python package which imports QA data from 
+                       the pkgcore PMS.
+
 The sub-projects is connected and interfaces via a database.
 
-====  The website interface  ====
+
+####  The website interface  ####
 A Django project.
-Files: django_gentoo_pkg/*
-See django_gentoo_pkg/README for more information.
+Files: 'django_gentoo_pkg/*'
+See 'django_gentoo_pkg/README' for more information.
 
-====  The Python data digester  ====
+
+####  The Python data digester  ####
 A Python script.
-Files: pkg_digester/*
-See pkg_digester/README for more information.
+Files: 'pkg_digester/*'
+See 'pkg_digester/README' for more information.
 
-==== Project design ====
 
-==== Task list ====
+#### Documentation ####
+As per the Agile programming practices no documentation will be created unless it is immediately and directly needed. 
 
-==== Documentation ====
-README --  this file.
-doc/design.txt -- the project design document.
-doc/task_list.txt -- document which aims to divide the project into manageable tasks.
-doc/reports/* -- the weekly reports which are sent to the gentoo-soc mailing list.
+Supreme efford will be dedicated to keep the produced documentation updated, concise, and reader friendly. No Wall Of Texts here.
+
+For all intents and purposes, consider the 'README' files the primary source of information about the project and the sub-projects. There are three 'README' files in this project: This file, and then one each for the two sub-projects. They are located in their respective sub-project top-level directory.
+
+These three (3) 'README' files (which conveniently github shows when browsing the directory) contain all the relevant information about the respective project.
+
+Documentation considering project planning, releases, iterations, stories tasks, and developer journal, see the file 'doc/plan.txt'. That file provides all the information about the project planning.
+
+For each week during the project an iteration report should be sent to the gentoo-soc mailing list to keep the Gentoo community up to date about the project. Copies of these reports reside in the 'doc/reports/' directory.
+
+To sum up, below are the important documentation files regarding the project and the two sub-projects listed.
+
+Project information: 'README', 'django_gentoo_pkg/README', 
+                     'pkg_digester/README'
+
+Project planning and journal: 'doc/plan.txt'
+
+Project iteration reports: 'doc/reports/*'
