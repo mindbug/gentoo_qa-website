@@ -1,0 +1,40 @@
+#### Gentoo x86 QA website - Iteration report #2 ####
+#### Date: 2010-06-16 ####
+Name: John-Patrik
+IRC: <mindbug>
+email: themindbug@gmail.com
+
+
+#### General information ####
+All the code and documentation belonging to this project can be found on
+github:
+
+github.com/mindbug/gentoo_qa-website
+
+Effort has been taken to keep the documentation consise and to the point. If you think something is missing please let me know.
+
+
+#### Project progress ####
+The first part of the project is a sub-project called pkg_digester. It is a Python script/module. The purpose of that script is to iterate through a pickled file containing pkgcore-checks objects, and to stuff that QA data in a database in a reasonable (formatted) manner. 
+
+The script now works for outputting the data in the pkgcore-checks objects to stdout nicely formatted. In essence, the script now iterates through the pickle stream and grabs "relevant" data, formats it to good-looking strings, creates a small dictionary of all the strings for the object, and prints it to stdout. 
+
+By the end of this iteration (week) I expect the script to be able to connect to a database (first develop with SQLite and then plug in MySQL) and to stuff it full of data.
+
+
+With the next iteration I will start working on the Django project, and the first task will be to make Django aware of the existing database, and to make them play nice with eachother.
+
+
+#### Evaluation(self) ####
+It is my opinion that it has taken too long to complete this script. Solution: code more. 
+
+However, I feel that there is not a lot left to code on the script, which was the thing I was worried most about regarding the whole project.
+
+The journal-keeping and task-listing has been sub-optimal. Expect improvements.
+
+
+#### Finally ####
+Please, read the README at the github project page:
+github.com/mindbug/gentoo_qa-website
+
+Python is fun.
