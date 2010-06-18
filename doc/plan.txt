@@ -1,31 +1,54 @@
-==== Task list ====
-    X Create Git project.
-    X Subscribe to gentoo-dev mailing list.
-    * Create a blog.
-        * Create a category like gentoo-soc, profit.
-    X Create a bugzilla account.
-    * Read planet.gentoo.org via rss reader.
-    * Contact robbat2@g.o. about shell access, provide ssh key.
-    X Tell Brian. (mail preferably)
-    * Ask Brian if I need Trac, if so, contact patrick@g.o.
-    * Do some work on the web interface each day, to get a sense of productiveness.
+==== Administration ====
+* Create a blog.
+    * Create a category like gentoo-soc, profit.
+* Contact robbat2@g.o. about shell access, provide ssh key.
+* Ask ferringb if I need Trac, if so, contact patrick@g.o.
 
-==== django_gentoo_pkg ====
-    * Django Model for the database.
-        * Write down which data needs to be gathered from the ebuild API.
-        * Translate the fields into Django Model Python, and write the class.
 
-    * MySQL interaction.
-        * Output the MySQL syntax for creating the database.
-        * Create the database.
+==== User stories ====
+TODO clean this section up.
 
-    * Testing.
-        * Input QA data about a random package manually.
-        * Test the website.
+* Index page search form
+    * User inputs text in textfield
+    * User inputs text in textfield AND specifies criteria 
+      (which database fields to include in the search) via 
+      checkboxes. Should they always be visible?
 
-==== Python Constrictor ====
-    * Write a Python script to load pkgcore data into a MySQL database.
-        * What gets returned while doing the for loop in my example code, when printing the whole '/usr/portage' repo. Can I manipulate those object? Get QA info? Use that for loop to stuff into db?
-        * Write a python script to use pkgcore-checks to do something, just for the fun of it. :)
-        * Write a Python script which uses pkgcore-checks to output QA info as pickles (Python objects as bytestream).
-        * Extend the script above to store the output in a file.
+* User wants to browse the database.
+    * Include a menu with buttons like: browse by category,
+      browse by keywords, browse by architecture? This would
+      be very similar to a search query with criterias.
+
+* User wants statistics about the database.
+    * Display on index page?
+
+* User wants statistics about packages.
+    * Include in search form? Include in package query results?
+
+* User searches by package name
+* User searches by category name
+* User searches by version
+* User searches by keywords/architecture
+* User searches by type of QA class
+* User searches by any combination of the above
+
+
+==== Tasks ====
+* ASAP
+    * Web UI user stories
+    * Extract requirements
+    * Define the database schema via Django models
+    * Insert mock entries into database for testing UI
+    * First UI sketch
+
+
+==== Journal 06-14 -- 06-20 ====
+Work on data importer on its way. Not done, but prints nicely to stdout. 
+Next task is to make it write to a SQLite3 database. Next after that 
+is to implement writing to MySQL.
+
+Paused work in the importer to work on the web UI. Purpose is to figure 
+out exactly what kind of data the importer needs to output. Work on the
+web interface is underway.
+
+Hopefully a rough and ugly web UI will be done by Monday morning.

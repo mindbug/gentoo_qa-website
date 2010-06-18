@@ -7,7 +7,10 @@
     pkgcore_checks objects into a human-readable collection of strings.
 """
 
+import sqlite3
+
 from snakeoil.pickling import iter_stream
+
 
 """ This script does not define any objects, nor does it use an Object 
     Oriented approach to the database interaction.  
@@ -48,6 +51,22 @@ def digest_to_db(picklefile):
     """
     unformatted_list = _load_pickles(picklefile)
 
+    # conn = sqlite3.connect('db.sqlite3')
+    connection_ = sqlite3.connect(":memory:")
+    cursor_ = connection_.cursor()
+    cursor_.execute('''create table qa_data
+        (category text, package text, version text, keywords text, 
+        classname text)''')
+    tmp = unformatted_list[2]
+    tmp = _format_result(tmp)
+    print tmp
+
+
+# Experimental code, handle the generators with care. ;)
+def _dict_generator():
+    pass
+
+def _tuple_generator():
     pass
 
 
@@ -89,7 +108,8 @@ def _format_result(result_obj):
 
 def main():
     pickle_file = "qa-results.pcheck"
-    digest_to_stdout(pickle_file)
+    # digest_to_stdout(pickle_file)
+    digest_to_db(pickle_file)
 
 # If called as a script call main(), otherwise be a module (be passive).
 if __name__ == '__main__':

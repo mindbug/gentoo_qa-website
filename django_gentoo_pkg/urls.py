@@ -6,7 +6,6 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('django_gentoo_pkg.pkgcore.views',
     (r'^pkgcore/$', 'index'),
-    (r'^pkgcore/results/$', 'results'),
     (r'^pkgcore/path/$', 'path'),
     # Example:
     # (r'^django_gentoo_pkg/', include('django_gentoo_pkg.foo.urls')),
