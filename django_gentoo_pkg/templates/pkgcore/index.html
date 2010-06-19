@@ -1,0 +1,31 @@
+{% extends "pkgcore/base.html" %}
+
+{% block title%}Search :){% endblock %}
+{% block content %}
+<div class="form">
+    <form name="search_input" action="" method="">
+    <fieldset>
+    <legend>Search packages</legend>
+        Search for: <input type="text" name="search_input" />
+        <br />
+        <input type="checkbox" name="criteria" 
+                   value="package" />As package name<br />
+        <input type="checkbox" name="criteria"
+                   value="category" />As category<br />
+        <input type="checkbox" name="criteria"
+                   value="version" />As version<br />
+        <input type="checkbox" name="criteria"
+                   value="keywords" />As keyword<br />
+        <input type="checkbox" name="criteria"
+                   value="classname" />As QA class<br />
+        <input type="checkbox" name="criteria"
+                   value="all" checked="checked" />
+                   As any of the above<br />
+        <input type="submit" value="Submit" />
+    </fieldset>
+    </form>
+</div>
+<p>Testing: In the Context dictionary, the key 'content' yields 
+   {{ content }}.
+</p>
+{% endblock %}

@@ -1,0 +1,26 @@
+==== The evolution of the View ====
+@@@ 1 @@@ Just standard (bad)
+from django.http import HttpResponse
+from django.template.loader import get_template
+from django.template import Context
+
+def index(request):
+    message = 'oh, hai!'
+    t = get_template('index.html')
+    c = Context({'content': message})
+    html = t.render(c)
+    return HttpResponse(html)
+
+@@@ 2 @@@ Using the shortcuts (better)
+from django.shortcuts import render_to_response
+
+def index(request):
+    message = 'oh, hai!'
+    return render_to_response('index.html', {'content': message})
+
+@@@ 3 @@@ Using locals() (much better)
+from django.shortcuts import render_to_response
+
+def index(request):
+    content = 'oh, hai thar!'
+    return render_to_response('index.html', locals())

@@ -52,3 +52,13 @@ out exactly what kind of data the importer needs to output. Work on the
 web interface is underway.
 
 Hopefully a rough and ugly web UI will be done by Monday morning.
+
+Created an ugly user interface index page. This user interface consists of a couple of Django templates located in 'django_gentoo_pkg/templates/pkgcore/'.
+
+The search form that presumably will be used resides in 'django_gentoo_pkg/templates/index.html'.
+
+Next task is to create the Django Model classes.
+
+Quick Django project layout
+    * Views are in 'pkgcore/views.py'
+    * Templates are in 'templates/pkgcore/'
