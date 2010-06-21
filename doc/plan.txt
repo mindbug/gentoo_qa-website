@@ -32,6 +32,10 @@ TODO clean this section up.
 * User searches by type of QA class
 * User searches by any combination of the above
 
+Secondary...
+* User searches for packages maintained by specific herds
+* User searches for packages belonging to specific repositories
+
 
 ==== Tasks ====
 * ASAP
@@ -55,10 +59,15 @@ Hopefully a rough and ugly web UI will be done by Monday morning.
 
 Created an ugly user interface index page. This user interface consists of a couple of Django templates located in 'django_gentoo_pkg/templates/pkgcore/'.
 
-The search form that presumably will be used resides in 'django_gentoo_pkg/templates/index.html'.
+The basic search form that will be used as a rouch template resides in 'django_gentoo_pkg/templates/index.html'.
 
 Next task is to create the Django Model classes.
 
 Quick Django project layout
     * Views are in 'pkgcore/views.py'
     * Templates are in 'templates/pkgcore/'
+
+==== Journal 06-21 -- 06-28 ====
+Started to work on the Django Models. A few question marks arose as the requirements to include herds and maintainers was added.
+
+Rough first try at the Models done. Might be a bit of an overkill to create classes for Package, Maintainer and Herd.
