@@ -51,11 +51,15 @@ Work on data importer on its way. Not done, but prints nicely to stdout.
 Next task is to make it write to a SQLite3 database. Next after that 
 is to implement writing to MySQL.
 
+...
+
 Paused work in the importer to work on the web UI. Purpose is to figure 
 out exactly what kind of data the importer needs to output. Work on the
 web interface is underway.
 
 Hopefully a rough and ugly web UI will be done by Monday morning.
+
+...
 
 Created an ugly user interface index page. This user interface consists of a couple of Django templates located in 'django_gentoo_pkg/templates/pkgcore/'.
 
@@ -71,3 +75,13 @@ Quick Django project layout
 Started to work on the Django Models. A few question marks arose as the requirements to include herds and maintainers was added.
 
 Rough first try at the Models done. Might be a bit of an overkill to create classes for Package, Maintainer and Herd.
+
+...
+
+Was not good, will split the Package into Packages and QAReports. Packages need to have only one version, so a Package has: category, package name, version, and links (ForeignKey as per SQL) to a QAReport. 
+
+Also look over the Herd linkage, and change (almost) all max_lengths to 255.
+
+...
+
+

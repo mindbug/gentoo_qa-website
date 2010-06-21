@@ -4,24 +4,36 @@ from django.db import models
 # and each attribute corresponds to a table column.
 
 
-class Package(models.Model):
-    package = models.CharField(max_length=30)
-    category = models.CharField(max_length=30)
+class QAReport(models.Model):
+    qa_class = models.CharField(max_length=255)
     description = models.TextField()
-    version = models.CharField(max_length=100)
-    qa_description = models.TextField()
-    qa_keywords = models.CharField(max_length=100)
-    qa_class = models.CharField(max_length=30)
+    keywords = models.TextField()
+    def __str__(self):
+        return '%s' % self.qa_class
+
+
+class Package(models.Model):
+    package = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+    repository = models.CharField(max_length=255)
+    version = models.CharField(max_length=255)
+    description = models.TextField()
     website = models.URLField()
+    qa_report = models.ForeignKey(QAReport)
+    def __str__(self):
+        return '%s-%s' % (self.package, self.version)
 
 
 class Maintainer(models.Model):
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    irc_nick = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    irc_nick = models.CharField(max_length=255)
     email = models.EmailField()
     website = models.URLField()
     packages = models.ManyToManyField(Package)
+    def __str__(self):
+        return '%s %s %s %s' % (self.first_name, self.last_name,
+                                self.irc_nick, self.email)
 
 
 # Info about all herds can be found in an xml doc:
@@ -32,3 +44,5 @@ class Herd(models.Model):
     email = models.EmailField()
     packages = models.ManyToManyField(Package)
     maintainers = models.ManyToManyField(Maintainer)
+    def __str__(self):
+        return '%s %s' % (self.name, self.email)
