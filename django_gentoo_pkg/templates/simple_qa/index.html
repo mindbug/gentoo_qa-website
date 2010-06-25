@@ -1,0 +1,8 @@
+{% extends "simple_qa/base.html" %}
+
+{% block content %}
+<form action="/simple_qa/search/" method="post">
+    Search package: <input type="text" name="search_input" />
+    <input type="button" name="submit_button" value="Submit" />
+</form>
+{% endblock %}

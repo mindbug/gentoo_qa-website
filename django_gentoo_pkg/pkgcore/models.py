@@ -4,24 +4,34 @@ from django.db import models
 # and each attribute corresponds to a table column.
 
 
-class QAReport(models.Model):
-    qa_class = models.CharField(max_length=255)
-    description = models.TextField()
-    keywords = models.TextField()
-    def __str__(self):
-        return '%s' % self.qa_class
+class Repository(models.Model):
+    name = models.CharField(max_length=255)
+    def __unicode__(self):
+        return '%s' % self.name
 
 
 class Package(models.Model):
     package = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
-    repository = models.CharField(max_length=255)
     version = models.CharField(max_length=255)
+    herd = models.CharField(max_length=255)
     description = models.TextField()
     website = models.URLField()
-    qa_report = models.ForeignKey(QAReport)
-    def __str__(self):
-        return '%s-%s' % (self.package, self.version)
+    # A Package belongs to a Repository.
+    repository = models.ForeignKey(Repository)
+    def __unicode__(self):
+        return '%s/%s-%s:%s' % (self.category, self.package, 
+                             self.version, self.repository)
+
+
+class QAReport(models.Model):
+    qa_class = models.CharField(max_length=255)
+    keywords = models.TextField()
+    description = models.TextField()
+    # A QAReport belongs to a package.
+    package = models.ForeignKey(Package)
+    def __unicode__(self):
+        return '%s' % self.qa_class
 
 
 class Maintainer(models.Model):
@@ -31,18 +41,18 @@ class Maintainer(models.Model):
     email = models.EmailField()
     website = models.URLField()
     packages = models.ManyToManyField(Package)
-    def __str__(self):
+    def __unicode__(self):
         return '%s %s %s %s' % (self.first_name, self.last_name,
                                 self.irc_nick, self.email)
 
 
-# Info about all herds can be found in an xml doc:
-# /gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml
-class Herd(models.Model):
-    name = models.CharField(max_length=20)
-    description = models.TextField()
-    email = models.EmailField()
-    packages = models.ManyToManyField(Package)
-    maintainers = models.ManyToManyField(Maintainer)
-    def __str__(self):
-        return '%s %s' % (self.name, self.email)
+##  Info about all herds can be found in an xml doc:
+## /gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml
+# class Herd(models.Model):
+#    name = models.CharField(max_length=20)
+#    description = models.TextField()
+#    email = models.EmailField()
+#    packages = models.ManyToManyField(Package)
+#    maintainers = models.ManyToManyField(Maintainer)
+#    def __unicode__(self):
+#        return '%s %s' % (self.name, self.email)

@@ -1,0 +1,29 @@
+#### Gentoo x86 QA website - Iteration report #3 ####
+#### Date: 2010-06-22 ####
+Name: John-Patrik
+IRC: <mindbug>
+email: themindbug@gmail.com
+
+
+#### General information ####
+All the code and documentation belonging to this project can be found on 
+github:
+
+github.com/mindbug/gentoo_qa-website
+
+Effort has been taken to keep the documentation consise and to the point. 
+If you think something is missing please let me know.
+
+
+#### Project progress ####
+The work on the pkgcore QA-report digester has been put on hold to wait for exact data that's needed of it. Thus, work on the website UI began and now consists of a search form which is intended to be on the index page.
+
+Have done the first stab at the Django Model classes for the website. They consists of (subject to change) QAReport, Package, Repository, Maintainer. Work on this not quite done yet, but good under way.
+
+This next week I'll continue to work on the Django website, mainly the Models and the Index page.
+
+#### Finally ####
+Please, read the README at the github project page:
+github.com/mindbug/gentoo_qa-website
+
+Python is fun.

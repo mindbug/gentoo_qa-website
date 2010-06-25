@@ -84,4 +84,6 @@ Also look over the Herd linkage, and change (almost) all max_lengths to 255.
 
 ...
 
+Maybe do Herd as an attribute in Package, and make a Repository model class?
 
+...
