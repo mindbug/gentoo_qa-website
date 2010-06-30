@@ -1,4 +1,8 @@
 from django.shortcuts import render_to_response
+from django.template import RequestContext
+
+from django_gentoo_pkg.simple_qa.models import Package, QAReport
+from django_gentoo_pkg.simple_qa.models import SearchForm
 
 
 def index(request):
@@ -7,12 +11,18 @@ def index(request):
 
 
 def search(request):
-    """
-    if 'q' in request.POST:
-        content = 'You searched for: %r' % request.POST['q']
+    # If the page is "posted", i.e. the form is submitted.
+    if request.method == 'POST':
+        # Create a form with the "posted" values.
+        form = SearchForm(request.POST)
+        # Check if the form is valid.
+        if form.is_valid():
+            result_message = "".join(["Results for ",
+                                      form.cleaned_data['query'],
+                                      ":"])
+            results = Package.objects.filter(
+                            name__icontains=form.cleaned_data['query'])
+    # Else create a new form.
     else:
-        content = 'You submitted an empty form.'
-    return render_to_response('simple_qa/search_result.html', locals())
-    """
-    content = 'search result1!1'
+        form = SearchForm()
     return render_to_response('simple_qa/search.html', locals())

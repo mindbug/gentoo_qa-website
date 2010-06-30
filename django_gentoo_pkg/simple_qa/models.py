@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 
 class Package(models.Model):
@@ -6,7 +7,7 @@ class Package(models.Model):
     category = models.CharField(max_length=255)
     version = models.CharField(max_length=255)
     def __unicode__(self):
-        '%s/%s-%s' % (self.category, self.name, self.version)
+        return '%s/%s-%s' % (self.category, self.name, self.version)
 
 
 class QAReport(models.Model):
@@ -16,3 +17,7 @@ class QAReport(models.Model):
     package = models.ForeignKey(Package)
     def __unicode__(self):
         return '%s: %s' % (self.package.name, self.qa_class)
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField(max_length=255)

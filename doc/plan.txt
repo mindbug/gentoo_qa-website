@@ -71,7 +71,7 @@ Quick Django project layout
     * Views are in 'pkgcore/views.py'
     * Templates are in 'templates/pkgcore/'
 
-==== Journal 06-21 -- 06-28 ====
+==== Journal 06-21 -- 06-30 ====
 Started to work on the Django Models. A few question marks arose as the requirements to include herds and maintainers was added.
 
 Rough first try at the Models done. Might be a bit of an overkill to create classes for Package, Maintainer and Herd.
@@ -87,3 +87,9 @@ Also look over the Herd linkage, and change (almost) all max_lengths to 255.
 Maybe do Herd as an attribute in Package, and make a Repository model class?
 
 ...
+
+Created a new Django application for the project, with simpler Models. The new application is called simple_qa.
+
+Activated the Django Administration pages/interfaces and input some dummy data.
+
+Created the search page for simple_qa. It now works to search for packages by package name. It returns any packages with names containing the query string (case-insensitive).

@@ -1,0 +1,57 @@
+#### Gentoo x86 QA website - Report #4 ####
+#### Date: 2010-06-30 ####
+Name: John-Patrik Nilsson
+IRC: <mindbug>
+email: themindbug@gmail.com
+
+
+#### General information ####
+All the code and documentation belonging to this project can be found on 
+github:
+
+github.com/mindbug/gentoo_qa-website
+
+Effort has been taken to keep the documentation consise and to the point. 
+If you think something is missing please let me know.
+
+
+#### Project progress ####
+This past week consisted of more Django work. An admin interface was 
+added, using the Django built-in modules. 
+
+Also, a new Django application was added, called simple_qa. This was done 
+because the initial models was considered (at the moment) more complex 
+than needed to get the core functionality of the QA website to a working 
+state. This new application uses a simplified model which only includes a 
+search form definition as well as classes representing:
+
+Package(name, category, version)
+QAReport(qa_class, keywords, description, Package)
+
+The data which is output by the pkgcore-checks data importer (in this 
+project) is roughly what is needed for creating the model objects Package 
+and QAReport. Yes, I am taking the easy way for now, it is entirely 
+possible to extend the model definitions further up the road.
+
+A search page and included functionality was added to the Django project 
+as well, it is now possible to search the Package names by containing 
+string.
+
+
+### Where to go from here ####
+Work on the search capabilities of the website. This means getting the 
+search form to display and output the correct data.
+
+When that is done, I would like to beautify it with some CSS, but 
+perhaps it is more pressing to get the Python data importer fully 
+functioal first. 
+
+The JavaScript will have to wait until last moment.
+
+
+#### Finally ####
+Project overview:
+http://github.com/mindbug/gentoo_qa-website
+
+Project plan & journal:
+http://github.com/mindbug/gentoo_qa-website/doc/plan.txt

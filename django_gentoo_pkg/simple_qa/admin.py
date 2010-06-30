@@ -1,4 +1,4 @@
-from django_gentoo_pkg.simple_qa.models import Package, QAReport
+from django_gentoo_pkg.simple_qa.models import *
 from django.contrib import admin
 
 
