@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 
 
 class Package(models.Model):
@@ -17,7 +16,3 @@ class QAReport(models.Model):
     package = models.ForeignKey(Package)
     def __unicode__(self):
         return '%s: %s' % (self.package.name, self.qa_class)
-
-
-class SearchForm(forms.Form):
-    query = forms.CharField(max_length=255)

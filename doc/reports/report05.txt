@@ -1,0 +1,61 @@
+#### Gentoo x86 QA website - Report 5 ####
+#### Date: 2010-07-07 ####
+Name: John-Patrik Nilsson
+IRC: <mindbug>
+email: themindbug@gmail.com
+
+
+#### General information ####
+All the code and documentation belonging to this project can be found on 
+github:
+
+github.com/mindbug/gentoo_qa-website
+
+
+#### Project progress ####
+Work is being done on the search page this week, still. It is after all
+the most important part of the website/interface. Notes and guidelines  
+about this search view has now been added to the README file of the 
+django_gentoo_pkg directory, but they are really nothing but common sense,
+having to do with designing a pleasant user experience. This functionality
+is built into Django, so the magic is all there, for the developer it is 
+just a matter of using it.
+
+The general idea is that the user can use the website to search for QA 
+reports and their packages in various manners. Obviously, all packages 
+are assumed to have (be related to) one or more QA reports, else it has no
+business being in the database/website and thus should be removed.
+
+Example use cases:
+    User wants to browse the database and have a look-around.
+    User wants to look up QA information about a specific package.
+    User wants to look up all packages which have a certain keyword
+    (~arch).
+    User wants to look up all packages which are subjects to a specific
+    QA mark, for example the packages which has had a keyword for too long
+    and thus is marked as being stale-unstable.
+
+Below is a preliminary list with the queries deemed useful.
+
+Search all packages by any or all of: name, category, 
+version, QAReport.qa_class, QAReport.keywords. (Note, code with 
+possibility of extending these criteria.)
+
+This work is done in the following files so far:
+django_gentoo_pkg/simple_qa/views.py
+django_gentoo_pkg/simple_qa/forms.py
+django_gentoo_pkg/templates/simple_qa/search*.html
+
+Work is going to continue on this functionality of searching through the 
+database until at least the above use cases has been implemented. This 
+is imperative to the success of the project. I project it will take me 
+until Sunday to complete this in its most hackish way. Of course, testing
+is being done with bogus packages in the database, since the data importer is not yet fully connected to the database.
+
+
+#### Finally ####
+Project overview (github project root directory):
+http://github.com/mindbug/gentoo_qa-website
+
+Project plan & journal:
+http://github.com/mindbug/gentoo_qa-website/doc/plan.txt

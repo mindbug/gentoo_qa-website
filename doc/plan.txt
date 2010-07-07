@@ -93,3 +93,5 @@ Created a new Django application for the project, with simpler Models. The new a
 Activated the Django Administration pages/interfaces and input some dummy data.
 
 Created the search page for simple_qa. It now works to search for packages by package name. It returns any packages with names containing the query string (case-insensitive).
+
+#### Journal 07-01 -- 07-04 ####

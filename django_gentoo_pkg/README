@@ -10,3 +10,17 @@ email: themindbug@gmail.com
 Uses the Django framework.
 Uses AJAX where possible.
 Uses CSS where possible.
+
+The prefect form:
+Use the escape filter in for all user-submitted data, like so:
+    <input type="text" name="q" value="{{ query|escape }}" />
+
+Use label html elements and useful contextual help.
+
+Everything, especially user input must be validated for harmful intents.
+
+If user has made any mistakes when filling out the form, the form should
+be redisplayed with the mistakes highlighted and explained. The data
+which was not erroneous should be prefilled so that user does not have to
+reenter everything.
+
