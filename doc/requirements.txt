@@ -1,0 +1,17 @@
+==== User stories: Primary ====
+* User wants to search QA data for a specific package.
+* User wants to search for packages having a specific QA classification 
+  (qa_class).
+
+==== User stories: Secondary ====
+* User searches by package name
+* User searches by category name
+* User searches by version
+* User searches by keywords/architecture
+* User searches by type of QA class
+* User searches by any combination of the above
+
+* User searches for packages maintained by specific herds
+* User searches for packages belonging to specific repositories
+
+==== Notes ====

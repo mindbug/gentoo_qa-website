@@ -5,45 +5,9 @@
 * Ask ferringb if I need Trac, if so, contact patrick@g.o.
 
 
-==== User stories ====
-TODO clean this section up.
-
-* Index page search form
-    * User inputs text in textfield
-    * User inputs text in textfield AND specifies criteria 
-      (which database fields to include in the search) via 
-      checkboxes. Should they always be visible?
-
-* User wants to browse the database.
-    * Include a menu with buttons like: browse by category,
-      browse by keywords, browse by architecture? This would
-      be very similar to a search query with criterias.
-
-* User wants statistics about the database.
-    * Display on index page?
-
-* User wants statistics about packages.
-    * Include in search form? Include in package query results?
-
-* User searches by package name
-* User searches by category name
-* User searches by version
-* User searches by keywords/architecture
-* User searches by type of QA class
-* User searches by any combination of the above
-
-Secondary...
-* User searches for packages maintained by specific herds
-* User searches for packages belonging to specific repositories
-
-
 ==== Tasks ====
-* ASAP
-    * Web UI user stories
-    * Extract requirements
-    * Define the database schema via Django models
-    * Insert mock entries into database for testing UI
-    * First UI sketch
+* Fix the user stories concerning the search functionality.
+* Look over the README files.
 
 
 ==== Journal 06-14 -- 06-20 ====
@@ -94,4 +58,16 @@ Activated the Django Administration pages/interfaces and input some dummy data.
 
 Created the search page for simple_qa. It now works to search for packages by package name. It returns any packages with names containing the query string (case-insensitive).
 
-#### Journal 07-01 -- 07-04 ####
+==== Journal 07-01 -- 07-07 ====
+Did more work on the search pages for simple_qa. Decoupled the forms from the models which resulted in a new file: simple_qa/forms.py.
+
+==== Journal 07-08 -- 07-15 ====
+Started to work on Python test cases for the data importer.
+
+Cleaned up and refactored the use cases.
+
+Added a new search page, adding functionality to search for packages by 
+package name and listing the QA classifications of those packages. This
+page is for now called search_qareport, and most of its magic happens in 
+simpla_qa/views.py. The idea is to combine all these search pages into a 
+single powerful page.
