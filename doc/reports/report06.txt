@@ -1,0 +1,23 @@
+#### Gentoo x86 QA website - Report 6 ####
+#### Date: 2010-07-15 ####
+Name: John-Patrik Nilsson
+IRC: <mindbug>
+email: themindbug@gmail.com
+
+
+#### General information ####
+All the code and documentation belonging to this project can be found on 
+github:
+
+github.com/mindbug/gentoo_qa-website
+
+
+#### Project progress ####
+
+
+#### Finally ####
+Project overview (github project root directory):
+http://github.com/mindbug/gentoo_qa-website
+
+Project plan & journal:
+http://github.com/mindbug/gentoo_qa-website/doc/plan.txt
