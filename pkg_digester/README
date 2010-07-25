@@ -1,2 +1,16 @@
 ====  Top-level design  ====
 Prepares data about ebuild atoms (well, about the entire repository really) from pkgcore, so that the web framework can use this data and present that to the users.  
+
+==== Databases ====
+database name: gentoo
+table name: qareports
+
+==== API for the sqlite3 db ====
+CREATE TABLE "simple_qa_qareport" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "category" varchar(255) NOT NULL,
+    "package" varchar(255) NOT NULL,
+    "version" varchar(255) NOT NULL,
+    "keywords" varchar(255) NOT NULL,
+    "qa_class" varchar(255) NOT NULL
+);

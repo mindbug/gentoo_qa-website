@@ -1,0 +1,8 @@
+CREATE TABLE "simple_qa_qareport" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "category" varchar(255) NOT NULL,
+    "package" varchar(255) NOT NULL,
+    "version" varchar(255) NOT NULL,
+    "keywords" varchar(255) NOT NULL,
+    "qa_class" varchar(255) NOT NULL
+);
