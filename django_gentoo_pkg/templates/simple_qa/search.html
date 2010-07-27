@@ -18,13 +18,13 @@
 <div class="pagination">
     <span class="step-links">
         {% if result_page.has_previous %}
-            <a href="?query={{ query }}&amp;page={{ result_page.previous_page_number }}">previous</a>
+            <a href="?query={{ query_string }}&amp;page={{ result_page.previous_page_number }}">previous</a>
         {% endif %}
         <span class="current">
             Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
         </span>
         {% if result_page.has_next %}
-            <a href="?query={{ query }}&amp;page={{ result_page.next_page_number }}">next</a>
+            <a href="?query={{ query_string }}&amp;page={{ result_page.next_page_number }}">next</a>
         {% endif %}
     </span>
 </div>
@@ -57,13 +57,13 @@
 <div class="pagination">
     <span class="step-links">
         {% if result_page.has_previous %}
-            <a href="?query={{ query }}&amp;page={{ result_page.previous_page_number }}">previous</a>
+            <a href="?query={{ query_string }}&amp;page={{ result_page.previous_page_number }}">previous</a>
         {% endif %}
         <span class="current">
             Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
         </span>
         {% if result_page.has_next %}
-            <a href="?query={{ query }}&amp;page={{ result_page.next_page_number }}">next</a>
+            <a href="?query={{ query_string }}&amp;page={{ result_page.next_page_number }}">next</a>
         {% endif %}
     </span>
 </div>

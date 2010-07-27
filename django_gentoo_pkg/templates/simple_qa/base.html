@@ -5,13 +5,31 @@
     </title>
     <link rel="stylesheet" type="text/css" href="gentoo_qa.css" />
     <style type="text/css">
-        body {background-color:#ffffff;}
+        body {
+            background-color:#f0f0fa;
+            margin: 0;
+            padding: 0;
+        }
         .row1 {background-color:#ffffff;}
         .row2 {background-color:#ddddff;}
-        h1.header {color: #98bf21; alignment: center;}
+        h1.header {
+            color: #ffffff;
+            text-align: center;
+        }
         /*
         table, th, td {border: 1px solid black;}
         */
+        #container {
+            width: 70%;
+            height: 100%;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+            border-left: 1px solid #ccccff;
+            border-right: 1px solid #ccccff;
+            border-bottom: 1px solid #ccccff;
+        }
         #qareports {
                     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
                     width: 100%;
@@ -34,13 +52,23 @@
             color: #000;
             background-color: #eaf2d3;
         }
+        #header, #content, #footer {
+            background-color: #ffffff;
+            padding: 5px;
+        }
+        #header {
+            text-color: #ffffff;
+            background-color: #776699;
+            border: 1px solid #ccccff;
+        }
     </style>
 </head>
 <body>
+<div id="container">
 
 <div id="header">
 {% block header %}
-<h1 class="header">Gentoo QA</h1>
+<h1 class="header">Gentoo Linux QA</h1>
 {% endblock %}
 </div>
 
@@ -50,6 +78,8 @@
 
 <div id="footer">
 {% block footer %}{% endblock %}
+</div>
+
 </div>
 </body>
 </html>
