@@ -29,44 +29,46 @@ def qareports(request):
     return render_to_response('simple_qa/qareports.html', locals())
 
 
+from django.db.models import Q
 from itertools import chain
 def search(request):
-    # If the page is "posted", i.e. the form is submitted.
+    # If the page is submitted with the correct method: GET.
     if request.method == 'GET':
-        # Create a form with the "posted" values,
+        # Create a form with the GET values,
         # so that the user does not have to retype anything.
         form = SearchForm(request.GET)
         # Check if the form is valid.
         if form.is_valid():
-            query = form.cleaned_data['query']
-            category_list = QAReport.objects.filter(
-                            category__icontains=query)
-            package_list = QAReport.objects.filter(
-                            package__icontains=query)
-            version_list = QAReport.objects.filter(
-                            version__icontains=query)
-            keywords_list = QAReport.objects.filter(
-                            keywords__icontains=query)
-            qa_class_list = QAReport.objects.filter(
-                            qa_class__icontains=query)
-            results = list(chain(category_list, package_list, version_list,
-                                 keywords_list, qa_class_list))
+            # Prepare the query.
+            query_string = form.cleaned_data['query']
+            queries = query_string.split()
+            queryset = QAReport.objects.all()
+            # We want the results which contain all of the queries,
+            # which means we want to filter the results for all queries,
+            # meaning: for all queries: filter the result.
+            for query in queries:
+                q = (Q(category__icontains=query) | 
+                     Q(package__icontains=query) | 
+                     Q(version__icontains=query) | 
+                     Q(keywords__icontains=query) | 
+                     Q(qa_class__icontains=query))
 
+                queryset = queryset.filter(q)
+
+            results = list(queryset)
             if results:
-                result_message = "".join(
-                        ["Results for ", form.cleaned_data['query'], ":"])
+                result_message = ("Results for '%s':" % query_string)
             else:
-                result_message = "No results for %s!" % form.cleaned_data['query']
+                result_message = ("No results for '%s'!" % query_string)
 
             # Do some Pagination
-            paginator = Paginator(results, 50) # Show 50 reports per page
-
+            obj_per_page = 30 # Show 30 reports per page
+            paginator = Paginator(results, obj_per_page) 
             # Make sure page request is an int. If not, deliver first page.
             try:
                 page = int(request.GET.get('page', '1'))
             except ValueError:
                 page = 1
-
             # If page request is out of range, deliver last page of results.
             try:
                 result_page = paginator.page(page)
