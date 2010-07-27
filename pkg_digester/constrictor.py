@@ -4,9 +4,8 @@
 # irc:<mindbug>
 #
 # TODO
-#   * option parsing
-#   * dynamic table names
 #   * exception handling
+#   * option parsing when executing from CL
 #   * usage help printing
 
 """module depends on pkgcore_checks.report_stream"""

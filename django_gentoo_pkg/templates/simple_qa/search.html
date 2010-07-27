@@ -1,16 +1,20 @@
 {% extends "simple_qa/base.html" %}
 
 {% block content %}
+
+{# the search form #}
 <form action="." method="GET">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit" />
 </form>
+{# end of the search form #}
 
 <p>{{ result_message }}</p>
 
 {# <p>&amp;query={{ query }}</p> #}
 
+{# top-page pagination code #}
 <div class="pagination">
     <span class="step-links">
         {% if result_page.has_previous %}
@@ -24,11 +28,32 @@
         {% endif %}
     </span>
 </div>
+{# end top-page pagination #}
 
+{# display the results #}
+{#{% cycle 'row1' 'row2' as rowcolors %}#}
+
+<table id="qareports">
+<tr>
+    <th>Category</th>
+    <th>Package</th>
+    <th>Version</th>
+    <th>Keywords</th>
+    <th>QA classification</th>
+</tr>
 {% for result in result_page.object_list %}
-<p>{{ result.package|upper }}</p>
+<tr class="{% cycle 'row1' 'row2' %}">
+    <td>{{ result.category }}</td>
+    <td>{{ result.package }}</td>
+    <td>{{ result.version }}</td>
+    <td>{{ result.keywords }}</td>
+    <td>{{ result.qa_class }}</td>
+</tr>
 {% endfor %}
+</table>
+{# end of results #}
 
+{# bottom-page pagination code #}
 <div class="pagination">
     <span class="step-links">
         {% if result_page.has_previous %}
@@ -42,4 +67,6 @@
         {% endif %}
     </span>
 </div>
+{# end bottom-page pagination #}
+
 {% endblock %}

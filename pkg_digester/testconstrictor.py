@@ -7,8 +7,9 @@ import sqlite3
 #############
 # con = constrictor.digest("pickle_file")
 # con.write_to_stdout()
-# con.write_to_sqlite3("db_file", "table")
-# con.write_to_mysql("db", "table", "user", "host", "passwd")
+# con.write_to_sqlite3(db_file="db_file", [table="the_table"])
+# con.write_to_mysql(user="you", host="the_host", passwd="your_passwd", 
+#                    [db="the_db", table="the_table"])
 
 
 ################################
