@@ -1,20 +1,17 @@
 from django.conf.urls.defaults import *
+from django.views.generic import list_detail
 from simple_qa.models import QAReport
+from simple_qa.views import *
 
 
-info_dict = {'queryset': QAReport.objects.all(),}
+qareport_dict = {'queryset': QAReport.objects.all(),
+             'template_object_name' : 'qareport',
+             'paginate_by': 50,
+}
 
 urlpatterns = patterns('',
-    (r'^$', 'django.views.generic.list_detail.object_list', info_dict),
-    (r'^(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', info_dict),
-    #url(r'^(?P<object_id>\d+)results/$', 'django.views.generic.list_detail.object_detail', dict(info_dict, template_name='simple_qa/results.html'), 'simple_qa_results'),
+    (r'^$', list_detail.object_list, qareport_dict),
+    #(r'^qareports/page(?<page>[0-9]+)/$', qareports),
+    (r'^qareports/$', qareports),
+    (r'^search/$', search),
 )
-
-
-# ----
-#urlpatterns = patterns('django_gentoo_pkg.simple_qa.views',
-    ##(r'^$', 'index'),
-    #(r'^$', 'search_qareport'),
-    ##(r'^search/$', 'search_package'),
-    #(r'^search_qareport/$', 'search_qareport'),
-#)

@@ -1,0 +1,45 @@
+{% extends "simple_qa/base.html" %}
+
+{% block content %}
+<form action="." method="GET">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+
+<p>{{ result_message }}</p>
+
+{# <p>&amp;query={{ query }}</p> #}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if result_page.has_previous %}
+            <a href="?query={{ query }}&amp;page={{ result_page.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
+        </span>
+        {% if result_page.has_next %}
+            <a href="?query={{ query }}&amp;page={{ result_page.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% for result in result_page.object_list %}
+<p>{{ result.package|upper }}</p>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if result_page.has_previous %}
+            <a href="?query={{ query }}&amp;page={{ result_page.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
+        </span>
+        {% if result_page.has_next %}
+            <a href="?query={{ query }}&amp;page={{ result_page.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

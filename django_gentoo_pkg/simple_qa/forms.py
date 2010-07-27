@@ -7,11 +7,6 @@ class SearchForm(forms.Form):
     query = forms.CharField(max_length=255)
 
 
-#class PackageForm(forms.ModelForm):
-    #class Meta:
-        #model = Package
-
-
 class QAReportForm(forms.ModelForm):
     class Meta:
         model = QAReport
