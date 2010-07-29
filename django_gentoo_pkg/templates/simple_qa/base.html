@@ -6,25 +6,29 @@
     <link rel="stylesheet" type="text/css" href="../media/css/base_wave.css" />
 </head>
 <body>
-<div id="main_body">
-    <div class="content_box" id="header">
+<div id="div_body">
+    <div class="div_content" id="header">
     {% block header %}
-        <h1 class="header">Gentoo Linux QA</h1>
+        <h1>Gentoo Linux QA</h1>
+    {% endblock %}
+    </div>
 
+    <div class="div_content" id="search">
+    {% block search %}
         <form id="search_form" action="." method="GET">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form }}
             <input type="submit" value="Submit" />
         </form>
     {% endblock %}
     </div>
 
-    <div class="content_box" id="content">
+    <div class="div_content" id="content">
     {% block content %}
     {% endblock %}
     </div>
 
-    <div class="content_box" id="footer">
+    <div class="div_content" id="footer">
     {% block footer %}
     {% endblock %}
     </div>

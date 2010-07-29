@@ -1,9 +1,27 @@
+====  Project info  ====
+Project Name: Constrictor
+Project Info: Google Summer of Code 2010 project
+Maintainer: John-Patrik Nilsson
+IRC nick: mindbug
+email: themindbug@gmail.com
+
+
 ====  Top-level design  ====
 Prepares data about ebuild atoms (well, about the entire repository really) from pkgcore, so that the web framework can use this data and present that to the users.  
 
+==== Usage, example ====
+At the Python CLI:
+>import constrictor
+>con = constrictor.digest("pickle_file") # Returns a Constrictor object.
+>con.write_to_stdout()
+>con.write_to_sqlite3(db_file="db.sqlite3", table="simple_qa_qareport")
+>con.write_to_mysql(user="you", host="your_host", passwd="your_passwd",
+>                   db="gentoo", table="simple_qa_qareport")
+
+
 ==== Databases ====
-database name: gentoo
-table name: qareports
+Default database name: gentoo
+Default table name: qareports
 
 ==== API for the sqlite3 db ====
 CREATE TABLE "simple_qa_qareport" (
@@ -14,3 +32,10 @@ CREATE TABLE "simple_qa_qareport" (
     "keywords" varchar(255) NOT NULL,
     "qa_class" varchar(255) NOT NULL
 );
+
+
+==== TODO ====
+* Add short_desc from pchecks into QAReport objects.
+* Run from terminal.
+* Option parsing.
+* Exception handling.

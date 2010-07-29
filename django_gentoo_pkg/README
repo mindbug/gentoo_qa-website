@@ -3,24 +3,24 @@ Project Name: Gentoo x86 QA-website
 Project Info: Google Summer of Code 2010 project
 Maintainer: John-Patrik Nilsson
 IRC nick: mindbug
-    #gentoo-soc, #gentoo-dev, #pkgcore
 email: themindbug@gmail.com
 
-==== Notes ====
-Uses the Django framework.
-Uses AJAX where possible.
-Uses CSS where possible.
 
-The prefect form:
-Use the escape filter in for all user-submitted data, like so:
-    <input type="text" name="q" value="{{ query|escape }}" />
+==== This is the Code ====
+Django application name: simple_qa
 
-Use label html elements and useful contextual help.
+Files:
+    URL configuration:  'simple_qa/urls.py'
+    Views:              'simple_qa/views.py'
+    Forms:              'simple_qa/forms.py'
+    Templates:          'templates/simple_qa/*'
+    CSS:                'site_media/css/*'
 
-Everything, especially user input must be validated for harmful intents.
 
-If user has made any mistakes when filling out the form, the form should
-be redisplayed with the mistakes highlighted and explained. The data
-which was not erroneous should be prefilled so that user does not have to
-reenter everything.
-
+==== TODO ====
+* Replace locals() in the views with the correct stuff.
+* Add support for short_desc from pkgcore-checks.
+* Add generic details view of the db items.
+* Add advanced search form.
+* Add pictures.
+* Add ECMAScript.

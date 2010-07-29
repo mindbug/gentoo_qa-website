@@ -5,8 +5,9 @@ body {
     padding: 0;
     color: #555555;
 }
-#main_body {
-    width: 75%;
+#div_body {
+    min-width: 850px;
+    max-width: 75%;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -18,23 +19,22 @@ body {
     border-bottom: 1px solid #ccccff;
     */
 }
-.content_box {
+.div_content {
     border: 1px solid #ccccff;
     padding: 20px;
     margin: 20px;
 }
 #header {
-    text-color: #ffffff;
+    color: #ffffff;
+    text-align: left;
     background-color: #776699;
     border: 1px solid #ccccff;
+    margin-top: 0px;
 }
 /** Specific stuff **/
-h1.header {
-    float: left;
-    color: #ffffff;
-    text-align: center;
-}
 #search_form {
+    position: relative;
+    width: 100%;
     float: right;
 }
 #qareports {
