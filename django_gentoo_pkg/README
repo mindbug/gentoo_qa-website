@@ -1,4 +1,6 @@
-====  Project info  ====
+########################
+####  Project info  ####
+########################
 Project Name: Gentoo x86 QA-website
 Project Info: Google Summer of Code 2010 project
 Maintainer: John-Patrik Nilsson
@@ -6,18 +8,23 @@ IRC nick: mindbug
 email: themindbug@gmail.com
 
 
-==== This is the Code ====
+##########################
+#### This is the Code ####
+##########################
 Django application name: simple_qa
 
 Files:
-    URL configuration:  'simple_qa/urls.py'
-    Views:              'simple_qa/views.py'
-    Forms:              'simple_qa/forms.py'
-    Templates:          'templates/simple_qa/*'
-    CSS:                'site_media/css/*'
+URL configuration:  'simple_qa/urls.py'
+Models:             'simple_qa/models.py'
+Views:              'simple_qa/views.py'
+Forms:              'simple_qa/forms.py'
+Templates:          'templates/simple_qa/*'
+CSS:                'site_media/css/*'
 
 
-==== TODO ====
+##############
+#### TODO ####
+##############
 * Replace locals() in the views with the correct stuff.
 * Add support for short_desc from pkgcore-checks.
 * Add generic details view of the db items.

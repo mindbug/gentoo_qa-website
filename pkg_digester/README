@@ -1,15 +1,22 @@
-====  Project info  ====
-Project Name: Constrictor
+########################
+####  Project info  ####
+########################
+Project Name: Gentoo x86 QA-website
 Project Info: Google Summer of Code 2010 project
 Maintainer: John-Patrik Nilsson
 IRC nick: mindbug
-email: themindbug@gmail.com
+Email: themindbug@gmail.com
 
 
-====  Top-level design  ====
+############################
+####  Top-level design  ####
+############################
 Prepares data about ebuild atoms (well, about the entire repository really) from pkgcore, so that the web framework can use this data and present that to the users.  
 
-==== Usage, example ====
+
+########################
+#### Usage, example ####
+########################
 At the Python CLI:
 >import constrictor
 >con = constrictor.digest("pickle_file") # Returns a Constrictor object.
@@ -19,11 +26,16 @@ At the Python CLI:
 >                   db="gentoo", table="simple_qa_qareport")
 
 
-==== Databases ====
+###################
+#### Databases ####
+###################
 Default database name: gentoo
-Default table name: qareports
+Default table name: simple_qa_qareport
 
-==== API for the sqlite3 db ====
+
+################################
+#### API for the sqlite3 db ####
+################################
 CREATE TABLE "simple_qa_qareport" (
     "id" integer NOT NULL PRIMARY KEY,
     "category" varchar(255) NOT NULL,
@@ -34,7 +46,9 @@ CREATE TABLE "simple_qa_qareport" (
 );
 
 
-==== TODO ====
+##############
+#### TODO ####
+##############
 * Add short_desc from pchecks into QAReport objects.
 * Run from terminal.
 * Option parsing.
