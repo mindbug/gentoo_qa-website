@@ -1,15 +1,6 @@
 {% extends "simple_qa/base.html" %}
 
 {% block content %}
-
-{# the search form #}
-<form action="." method="GET">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
-</form>
-{# end of the search form #}
-
 <p>{{ result_message }}</p>
 
 {# <p>&amp;query={{ query }}</p> #}

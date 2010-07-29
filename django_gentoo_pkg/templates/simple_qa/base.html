@@ -3,83 +3,31 @@
 <head>
     <title>The Gentoo QA Website - {% block title %}{% endblock %}
     </title>
-    <link rel="stylesheet" type="text/css" href="gentoo_qa.css" />
-    <style type="text/css">
-        body {
-            background-color:#f0f0fa;
-            margin: 0;
-            padding: 0;
-        }
-        .row1 {background-color:#ffffff;}
-        .row2 {background-color:#ddddff;}
-        h1.header {
-            color: #ffffff;
-            text-align: center;
-        }
-        /*
-        table, th, td {border: 1px solid black;}
-        */
-        #container {
-            width: 70%;
-            height: 100%;
-            margin-top: 0;
-            margin-bottom: 0;
-            margin-left: auto;
-            margin-right: auto;
-            border-left: 1px solid #ccccff;
-            border-right: 1px solid #ccccff;
-            border-bottom: 1px solid #ccccff;
-        }
-        #qareports {
-                    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-                    width: 100%;
-                    border-collapse: collapse;
-        }
-        #qareports td, #qareports th {
-            font-size:1.2em;
-            border: 1px solid #ccccff;
-            padding: 3px 7px 2px 7px;
-        }
-        #qareports th {
-            font-size: 1.4em;
-            text-align: left;
-            padding-top: 5px;
-            padding-bottom: 4px;
-            background-color: #776699;
-            color: #fff;
-        }
-        #qareports tr.alt td {
-            color: #000;
-            background-color: #eaf2d3;
-        }
-        #header, #content, #footer {
-            background-color: #ffffff;
-            padding: 5px;
-        }
-        #header {
-            text-color: #ffffff;
-            background-color: #776699;
-            border: 1px solid #ccccff;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../media/css/base_wave.css" />
 </head>
 <body>
-<div id="container">
+<div id="main_body">
+    <div class="content_box" id="header">
+    {% block header %}
+        <h1 class="header">Gentoo Linux QA</h1>
 
-<div id="header">
-{% block header %}
-<h1 class="header">Gentoo Linux QA</h1>
-{% endblock %}
-</div>
+        <form id="search_form" action="." method="GET">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" />
+        </form>
+    {% endblock %}
+    </div>
 
-<div id="content">
-{% block content %}{% endblock %}
-</div>
+    <div class="content_box" id="content">
+    {% block content %}
+    {% endblock %}
+    </div>
 
-<div id="footer">
-{% block footer %}{% endblock %}
-</div>
-
+    <div class="content_box" id="footer">
+    {% block footer %}
+    {% endblock %}
+    </div>
 </div>
 </body>
 </html>
