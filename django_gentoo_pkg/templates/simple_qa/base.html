@@ -9,11 +9,10 @@
 <div id="div_body">
     <div class="div_content" id="header">
     {% block header %}
-        <h1>Gentoo Linux QA</h1>
     {% endblock %}
     </div>
 
-    <div class="div_content" id="search">
+    <div class="div_content" id="search_div">
     {% block search %}
         <form id="search_form" action="." method="GET">
             {% csrf_token %}
@@ -30,6 +29,7 @@
 
     <div class="div_content" id="footer">
     {% block footer %}
+        <p>Footer</p>
     {% endblock %}
     </div>
 </div>
