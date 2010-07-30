@@ -1,29 +1,11 @@
 {% extends "simple_qa/base.html" %}
-
-{% block content %}
-<h3 id="result_message">{{ result_message }}</h3>
-
 {# <p>&amp;query={{ query }}</p> #}
-
-{# top-page pagination code #}
-<div class="pagination">
-    <span class="step-links">
-        {% if result_page.has_previous %}
-            <a href="?query={{ query_string }}&amp;page={{ result_page.previous_page_number }}">previous</a>
-        {% endif %}
-        <span class="current">
-            Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
-        </span>
-        {% if result_page.has_next %}
-            <a href="?query={{ query_string }}&amp;page={{ result_page.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
-{# end top-page pagination #}
-
-{# display the results #}
-{#{% cycle 'row1' 'row2' as rowcolors %}#}
-
+{% block content %}
+{% if result_message %}
+<h3 id="result_message">{{ result_message|default:"" }}</h3>
+{% endif %}
+{# display the results (or lack of) #}
+{% if result_page %}
 <table id="qareports">
 <tr>
     <th>Category</th>
@@ -42,9 +24,11 @@
 </tr>
 {% endfor %}
 </table>
+{% endif %}
 {# end of results #}
 
 {# bottom-page pagination code #}
+{% if result_page.has_next %}
 <div class="pagination">
     <span class="step-links">
         {% if result_page.has_previous %}
@@ -58,6 +42,6 @@
         {% endif %}
     </span>
 </div>
+{% endif %}
 {# end bottom-page pagination #}
-
 {% endblock %}

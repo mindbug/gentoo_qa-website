@@ -5,6 +5,9 @@ body {
     padding: 0;
     color: #555555;
 }
+hr {
+    margin: 20px;
+}
 #div_body {
     width: 850px;
     /*
@@ -23,48 +26,33 @@ body {
     */
 }
 .div_content {
-    border: 1px solid #ccccff;
+    /* border: 1px solid #ccccff; */
     padding: 20px;
     margin: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
     clear: both;
 }
-#header {
+#header_div {
     height: 110px;
     color: #ffffff;
     text-align: center;
     background-color: #6d4eae;
-    background-image:url('../gfx/title.jpg');
-    /* border: 1px solid #ccccff; */
-    border: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    background-image:url('../gfx/title_2.jpg');
+    margin-bottom: 20px;
 }
-#footer {
-    margin-bottom: 0px;
+#footer_div {
     background-color: #ffffff;
     padding: 0px 20px;
+    margin-top: 20px;
 }
 /** Specific stuff **/
-/*
 #search_div {
-    padding: 0px;
-    height: 2em;
-    margin-top: 0px;
+    /* padding: .5em; */
+    margin-bottom: 0px;
 }
-#search_form {
-    position: relative;
-    border: 1px solid #00ff00;
-    float: right;
-    margin: 0px;
-    margin-right: 20px;
-    padding: 0px;
-    height: 2em;
-}
-*/
-#search_div {
-    border: 0px;
+#content_div {
     margin-top: 0px;
-    padding: .5em;
 }
 #qareports {
     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;

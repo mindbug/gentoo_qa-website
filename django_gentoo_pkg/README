@@ -20,14 +20,16 @@ Views:              'simple_qa/views.py'
 Forms:              'simple_qa/forms.py'
 Templates:          'templates/simple_qa/*'
 CSS:                'site_media/css/*'
+Graphics:           'site_media/gfx/*'
 
 
 ##############
 #### TODO ####
 ##############
-* Replace locals() in the views with the correct stuff.
-* Add support for short_desc from pkgcore-checks.
-* Add generic details view of the db items.
 * Add advanced search form.
+* Add generic details view of the db items.
+* Add support for short_desc from pkgcore-checks.
+* Refactor the view.
+* Fix the empty form look.
 * Add pictures.
 * Add ECMAScript.

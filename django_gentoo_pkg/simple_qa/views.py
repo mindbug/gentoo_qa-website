@@ -32,6 +32,7 @@ def qareports(request):
 from django.db.models import Q
 from itertools import chain
 def search(request):
+    result_dict = {}
     # If the page is submitted with the correct method: GET.
     if request.method == 'GET':
         # Create a form with the GET values,
@@ -75,7 +76,17 @@ def search(request):
             except (EmptyPage, InvalidPage):
                 result_page = paginator.page(paginator.num_pages)
 
+            result_dict = {'result_message': result_message,
+                           'result_page': result_page,
+                           'query_string': query_string,
+                           'form': form}
+
+        else:
+            result_dict = {'result_message': "The entry is not valid.",
+                           'form': form}
+
     # Else create a new form.
     else:
         form = SearchForm()
-    return render_to_response('simple_qa/search.html', locals())
+        result_dict = {'form': form}
+    return render_to_response('simple_qa/search.html', result_dict)
