@@ -4,6 +4,7 @@ from django.http import QueryDict
 
 from django_gentoo_pkg.simple_qa.models import QAReport
 from django_gentoo_pkg.simple_qa.forms import SimpleSearch, AdvancedSearch
+from django_gentoo_pkg.simple_qa.forms import QAReportForm
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 
@@ -170,4 +171,11 @@ def simple_search(request):
         return_dict = {'form': form}
 
     return_dict['css_url'] = "../media/css/base_wave.css"
+    return render_to_response('simple_qa/search.html', return_dict)
+
+
+def model_search(request):
+    return_dict = {}
+    return_dict['form'] = QAReportForm()
+    return_dict['css_url'] = "../../media/css/base_wave.css"
     return render_to_response('simple_qa/search.html', return_dict)

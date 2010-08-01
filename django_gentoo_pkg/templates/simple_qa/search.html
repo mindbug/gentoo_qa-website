@@ -1,12 +1,8 @@
 {% extends "simple_qa/base.html" %}
 {# <p>&amp;query={{ query }}</p> #}
 {% block content %}
-<p>full GET string: {{ get_string }}</p>
-<p>page: {{ page }}</p>
-<p>fields: {{ fields }}</p>
-<p>url except page: {{ query_url }}</p>
 {% if result_message %}
-<h3 id="result_message">{{ result_message|default:"" }}</h3>
+<h3 id="result_message">{{ result_message|default:"No results to display." }}</h3>
 {% endif %}
 {# display the results (or lack of) #}
 {% if result_page %}
@@ -32,7 +28,7 @@
 {# end of results #}
 
 {# bottom-page pagination code #}
-{% if result_page.has_next %}
+{% if result_page %}
 <div class="pagination">
     <span class="step-links">
         {% if result_page.has_previous %}
