@@ -2,9 +2,25 @@ from django import forms
 from django_gentoo_pkg.simple_qa.models import QAReport
 #from django_gentoo_pkg.simple_qa.models import Package
 
+CHOICES = (
+    ('category', 'Software category'),
+    ('package', 'Package name'),
+    ('version', 'Package version'),
+    ('keywords', 'Keyword architecture'),
+    ('qa_class', 'QA classification'),
+)
 
-class SearchForm(forms.Form):
-    query = forms.CharField(max_length=255)
+class AdvancedSearch(forms.Form):
+    error_css_class = 'error'
+    required_css_class = 'required'
+    query = forms.CharField(max_length=255, label="Search", initial="keywords", required=False)
+    fields = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple(attrs={'class': 'checkboxes'}), choices=CHOICES, required=False)
+
+
+class SimpleSearch(forms.Form):
+    error_css_class = 'error'
+    required_css_class = 'required'
+    query = forms.CharField(max_length=255, label="Search", initial="keywords")
 
 
 class QAReportForm(forms.ModelForm):

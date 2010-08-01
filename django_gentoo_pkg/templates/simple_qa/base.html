@@ -3,7 +3,10 @@
 <head>
     <title>The Gentoo QA Website - {% block title %}{% endblock %}
     </title>
-    <link rel="stylesheet" type="text/css" href="../media/css/base_wave.css" />
+    {% if css_url %}
+        <link rel="stylesheet" type="text/css" 
+            href={{ css_url }} />
+    {% endif %}
 </head>
 <body>
 <div id="div_body">
@@ -16,8 +19,10 @@
     {% block search %}
         <form id="search_form" action="." method="GET">
             {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Submit" />
+            {{ form.as_p }}
+            {% if form %}
+                <input type="submit" value="Submit" />
+            {% endif %}
         </form>
     {% endblock %}
     </div>
@@ -29,7 +34,6 @@
 
     <div class="div_content" id="footer_div">
     {% block footer %}
-        <p>Footer</p>
     {% endblock %}
     </div>
 </div>
