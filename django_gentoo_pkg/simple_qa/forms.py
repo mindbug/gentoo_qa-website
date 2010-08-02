@@ -9,7 +9,7 @@ CHOICES = (
     ('keywords', 'Keyword architecture'),
     ('qa_class', 'QA classification'),
     ('short_desc', 'Description'),
-    ('arch', 'Stabled architecture'),
+    ('arch', 'Stable architecture'),
     ('threshold', 'Threshold'),
 )
 

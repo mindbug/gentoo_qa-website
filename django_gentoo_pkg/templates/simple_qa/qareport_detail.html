@@ -1,10 +1,41 @@
-<html>
-<body>
-    <h3>QA Reports</h3>
-    <ul>
-        {% for report in object_list %}
-        <li>{{ report.package }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "simple_qa/base.html" %}
+{% block content %}
+<table>
+<tr class="row1">
+    <th>Attribute</th>
+    <th>Value</th>
+</tr>
+<tr class="row2">
+    <td>Package</td>
+    <td>{{ qareport.package }}</td>
+</tr>
+<tr class="row1">
+    <td>Category</td>
+    <td>{{ qareport.category }}</td>
+</tr>
+<tr class="row2">
+    <td>Versions</td>
+    <td>{{ qareport.version }}</td>
+</tr>
+<tr class="row1">
+    <td>Stable architectures</td>
+    <td>{{ qareport.arch }}</td>
+</tr>
+<tr class="row2">
+    <td>Keyworded architectures</td>
+    <td>{{ qareport.keywords }}</td>
+</tr>
+<tr class="row1">
+    <td>QA classification</td>
+    <td>{{ qareport.qa_class }}</td>
+</tr>
+<tr class="row2">
+    <td>Description</td>
+    <td>{{ qareport.short_desc }}</td>
+</tr>
+<tr class="row1">
+    <td>Threshold</td>
+    <td>{{ qareport.threshold }}</td>
+</tr>
+</table>
+{% endblock %}

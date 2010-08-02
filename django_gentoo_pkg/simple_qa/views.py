@@ -33,7 +33,8 @@ def qareport_detail(request, qareport_id):
     return_dict = {}
     qareport = QAReport.objects.get(id__iexact=qareport_id)
     return_dict['qareport'] = qareport
-    return render_to_response('simple_qa/qareport.html', return_dict)
+    return_dict['css_url'] = '../../media/css/qareport_detail.css'
+    return render_to_response('simple_qa/qareport_detail.html', return_dict)
 
 
 from django.db.models import Q
@@ -125,6 +126,7 @@ def advanced_search(request):
     else:
         return_dict['form'] = AdvancedSearch()
 
+    return_dict['detail_url'] = "../../qareports"
     return_dict['css_url'] = "../../media/css/base_wave.css"
     return render_to_response('simple_qa/search.html', return_dict)
 
@@ -187,6 +189,7 @@ def simple_search(request):
         form = SimpleSearch()
         return_dict = {'form': form}
 
+    return_dict['detail_url'] = "../qareports"
     return_dict['css_url'] = "../media/css/base_wave.css"
     return render_to_response('simple_qa/search.html', return_dict)
 

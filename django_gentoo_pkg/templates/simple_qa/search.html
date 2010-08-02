@@ -11,14 +11,17 @@
     <th>Category</th>
     <th>Package</th>
     <th>Version</th>
+    <th>Architecture</th>
     <th>Keywords</th>
     <th>QA classification</th>
 </tr>
 {% for result in result_page.object_list %}
 <tr class="{% cycle 'row1' 'row2' %}">
     <td>{{ result.category }}</td>
-    <td><a href="../qareports/{{ result.id }}">{{ result.package }}</a></td>
+    <td><a href="{{ detail_url }}/{{ result.id }}">{{ result.package }}</a>
+    </td>
     <td>{{ result.version }}</td>
+    <td>{{ result.arch }}</td>
     <td>{{ result.keywords }}</td>
     <td>{{ result.qa_class }}</td>
 </tr>
