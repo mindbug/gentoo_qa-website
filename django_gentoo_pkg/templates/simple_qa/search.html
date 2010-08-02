@@ -17,7 +17,7 @@
 {% for result in result_page.object_list %}
 <tr class="{% cycle 'row1' 'row2' %}">
     <td>{{ result.category }}</td>
-    <td>{{ result.package }}</td>
+    <td><a href="../qareports/{{ result.id }}">{{ result.package }}</a></td>
     <td>{{ result.version }}</td>
     <td>{{ result.keywords }}</td>
     <td>{{ result.qa_class }}</td>

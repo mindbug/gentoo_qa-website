@@ -59,7 +59,10 @@ class Constrictor:
             "package" varchar(255) NOT NULL, 
             "version" varchar(255) NOT NULL, 
             "keywords" varchar(255) NOT NULL, 
-            "qa_class" varchar(255) NOT NULL)''')
+            "qa_class" varchar(255) NOT NULL,
+            "short_desc" text NOT NULL,
+            "arch" varchar(255) NOT NULL,
+            "threshold" varchar(255) NOT NULL)''')
             c.execute(query)
         except sqlite3.OperationalError as e:
             print "%s, %s." % ("Could not create table because: ", e)
@@ -67,9 +70,10 @@ class Constrictor:
         try:
             for count, report in enumerate(self.qareports):
                 t = (count, report.category, report.package, report.version,
-                    report.keywords, report.qa_class)
-                query = "%s %s %s" % ("INSERT INTO", table, 
-                        "VALUES (?, ?, ?, ?, ?, ?)")
+                    report.keywords, report.qa_class, report.short_desc, 
+                    report.arch, report.threshold)
+                query = ("%s %s %s" % ("INSERT INTO", table, 
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"))
                 c.execute(query, t)
         except sqlite3.OperationalError as e:
             print "%s, %s." % ("Could not insert values because: ", e)
@@ -96,7 +100,10 @@ class Constrictor:
             `package` varchar(255) NOT NULL,
             `version` varchar(255) NOT NULL,
             `keywords` varchar(255) NOT NULL,
-            `qa_class` varchar(255) NOT NULL)''')
+            `qa_class` varchar(255) NOT NULL,
+            `short_desc` varchar(255) NOT NULL,
+            `arch` varchar(255) NOT NULL,
+            `threshold` varchar(255) NOT NULL)''')
             c.execute(query)
         except _mysql_exceptions.OperationalError as e:
             print e
@@ -104,10 +111,11 @@ class Constrictor:
         try:
             for report in self.qareports:
                 query = "%s %s %s %s" % ("INSERT INTO", table, 
-                "(category, package, version, keywords, qa_class)",
-                "VALUES (%s, %s, %s, %s, %s)")
+                "(category, package, version, keywords, qa_class, short_desc, arch, threshold)",
+                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
                 t = (report.category, report.package, report.version,
-                     report.keywords, report.qa_class)
+                     report.keywords, report.qa_class, report.short_desc,
+                     report.arch, report.threshold)
                 c.execute(query, t)
             #
             # If we could represent QAReports as tuples instead we could do:
@@ -128,6 +136,9 @@ class QAReport:
         self.version = self.attributes["version"]
         self.keywords = self.attributes["keywords"]
         self.qa_class = self.attributes["qa_class"]
+        self.short_desc = self.attributes["short_desc"]
+        self.arch = self.attributes["arch"]
+        self.threshold = self.attributes["threshold"]
 
     def format(self, pcheck):
         """formats the pcheck object into a dictionary of QA values"""
@@ -155,8 +166,23 @@ class QAReport:
             keywords = " ".join(pcheck.keywords).strip()
         except AttributeError:
             keywords = "n/a"
+        try:
+            arch = pcheck.arch
+            if isinstance(arch, tuple):
+                arch = " ".join(arch).strip()
+        except AttributeError:
+            arch = "n/a"
+        try:
+            short_desc = pcheck.short_desc
+        except AttributeError:
+            short_desc = "n/a"
+        try:
+            threshold = pcheck.threshold
+        except AttributeError:
+            threshold = "n/a"
         return {'category': category, 'package': package, 'version': version, 
-                'keywords': keywords, 'qa_class': classname}
+                'keywords': keywords, 'qa_class': classname, 
+                'short_desc': short_desc, 'arch': arch, 'threshold': threshold}
 
     def __str__(self):
         return '%s/%s-%s:%s:%s' % (self.category, self.package, self.version,

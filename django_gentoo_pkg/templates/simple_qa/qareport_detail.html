@@ -1,7 +1,10 @@
 <html>
-<head>
-</head>
 <body>
-    <h1>{{ qareport.package }}</h1>
+    <h3>QA Reports</h3>
+    <ul>
+        {% for report in object_list %}
+        <li>{{ report.package }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

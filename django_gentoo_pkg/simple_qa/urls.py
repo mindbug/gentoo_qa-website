@@ -5,15 +5,16 @@ from simple_qa.views import *
 from django.conf import settings
 
 
-qareport_dict = {'queryset': QAReport.objects.all(),
+qareport_info = {'queryset': QAReport.objects.all(),
              'template_object_name' : 'qareport',
              'paginate_by': 50,
 }
 
+
 urlpatterns = patterns('',
-    (r'^$', list_detail.object_list, qareport_dict),
-    #(r'^qareports/page(?<page>[0-9]+)/$', qareports),
-    (r'^qareports/$', qareports),
+    (r'^$', list_detail.object_list, qareport_info),
+    (r'^qareports/(?P<qareport_id>\d+)/$', qareport_detail),
+    (r'^qareports/$', list_detail.object_list, qareport_info),
     (r'^search/advanced/$', advanced_search),
     (r'^search/test/$', model_search),
     (r'^search/$', simple_search),

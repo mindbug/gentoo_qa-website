@@ -26,6 +26,7 @@ Graphics:           'site_media/gfx/*'
 ##############
 #### TODO ####
 ##############
+* The advanced search logic is bad, very bad.
 * Add generic details view of the db items.
 * Add support for short_desc from pkgcore-checks.
 * Add support for sorting.

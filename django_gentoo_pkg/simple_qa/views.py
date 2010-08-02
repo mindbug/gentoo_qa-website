@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.http import QueryDict
+from django.http import QueryDict, Http404
 
 from django_gentoo_pkg.simple_qa.models import QAReport
 from django_gentoo_pkg.simple_qa.forms import SimpleSearch, AdvancedSearch
@@ -27,6 +27,13 @@ def qareports(request):
         obj_page = paginator.page(paginator.num_pages)
 
     return render_to_response('simple_qa/qareports.html', locals())
+
+
+def qareport_detail(request, qareport_id):
+    return_dict = {}
+    qareport = QAReport.objects.get(id__iexact=qareport_id)
+    return_dict['qareport'] = qareport
+    return render_to_response('simple_qa/qareport.html', return_dict)
 
 
 from django.db.models import Q
@@ -65,6 +72,16 @@ def advanced_search(request):
                 if 'qa_class' in query_fields:
                     queryset_list.append(queryset.filter(
                                             Q(qa_class__icontains=query)))
+                if 'short_desc' in query_fields:
+                    queryset_list.append(queryset.filter(
+                                            Q(short_desc__icontains=query)))
+                if 'arch' in query_fields:
+                    queryset_list.append(queryset.filter(
+                                            Q(arch__icontains=query)))
+                if 'threshold' in query_fields:
+                    queryset_list.append(queryset.filter(
+                                            Q(threshold__icontains=query)))
+
             matches = []
             for qset in queryset_list:
                 matches = matches + list(qset)
@@ -176,6 +193,15 @@ def simple_search(request):
 
 def model_search(request):
     return_dict = {}
-    return_dict['form'] = QAReportForm()
+    if request.method == 'GET':
+        form = QAReportForm(request.GET)
+        if form.is_valid():
+            pass
+        else:
+            return_dict['form'] = form
+    elif request.method == 'POST':
+        pass
+    else:
+        return_dict['form'] = QAReportForm()
     return_dict['css_url'] = "../../media/css/base_wave.css"
     return render_to_response('simple_qa/search.html', return_dict)

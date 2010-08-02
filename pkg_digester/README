@@ -49,7 +49,7 @@ CREATE TABLE "simple_qa_qareport" (
 ##############
 #### TODO ####
 ##############
-* Add short_desc from pchecks into QAReport objects.
+* Add short_desc, arch, threshold, from pchecks into QAReport objects.
 * Run from terminal.
 * Option parsing.
 * Exception handling.
