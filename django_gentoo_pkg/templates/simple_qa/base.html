@@ -3,15 +3,22 @@
 <head>
     <title>The Gentoo QA Website - {% block title %}{% endblock %}
     </title>
-    {% if css_url %}
-        <link rel="stylesheet" type="text/css" 
-            href={{ css_url }} />
-    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{{ media_url }}css/base_wave.css" />
 </head>
 <body>
 <div id="div_body">
     <div class="div_content" id="header_div">
     {% block header %}
+    {% endblock %}
+    </div>
+
+    <div class="div_content" id="nav_div">
+    {% block navigation %}
+    <ul class="navigation">
+        <li><a href="http://www.gentoo.org">gentoo.org</a></li>
+        <li><a href="{{ search_url }}">search</a></li>
+        <li><a href="{{ search_url }}advanced">advanced search</a></li>
+    </ul>
     {% endblock %}
     </div>
 

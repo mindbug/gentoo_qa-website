@@ -54,17 +54,17 @@ hr {
 #content_div {
     margin-top: 0px;
 }
-#qareports {
+table {
     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
     width: 100%;
     border-collapse: collapse;
 }
-#qareports td, #qareports th {
+td, th {
     font-size:1.2em;
     border: 1px solid #ccccff;
     padding: 3px 7px 2px 7px;
 }
-#qareports th {
+th {
     font-size: 1.4em;
     text-align: left;
     padding-top: 5px;

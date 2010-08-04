@@ -1,10 +1,9 @@
 {% extends "simple_qa/base.html" %}
-{# <p>&amp;query={{ query }}</p> #}
 {% block content %}
 {% if result_message %}
 <h3 id="result_message">{{ result_message|default:"No results to display." }}</h3>
 {% endif %}
-{# display the results (or lack of) #}
+
 {% if result_page %}
 <table id="qareports">
 <tr>
@@ -18,7 +17,7 @@
 {% for result in result_page.object_list %}
 <tr class="{% cycle 'row1' 'row2' %}">
     <td>{{ result.category }}</td>
-    <td><a href="{{ detail_url }}/{{ result.id }}">{{ result.package }}</a>
+    <td><a href="{{ detail_url }}{{ result.id }}">{{ result.package }}</a>
     </td>
     <td>{{ result.version }}</td>
     <td>{{ result.arch }}</td>
@@ -28,9 +27,7 @@
 {% endfor %}
 </table>
 {% endif %}
-{# end of results #}
 
-{# bottom-page pagination code #}
 {% if result_page %}
 <div class="pagination">
     <span class="step-links">
@@ -46,5 +43,4 @@
     </span>
 </div>
 {% endif %}
-{# end bottom-page pagination #}
 {% endblock %}

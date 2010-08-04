@@ -1,51 +1,23 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import QueryDict, Http404
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.db.models import Q
 
 from django_gentoo_pkg.simple_qa.models import QAReport
 from django_gentoo_pkg.simple_qa.forms import SimpleSearch, AdvancedSearch
 from django_gentoo_pkg.simple_qa.forms import QAReportForm
-from django.core.paginator import Paginator, InvalidPage, EmptyPage
-
-
-def public(request):
-    content = 'simple_qa!'
-    return render_to_response('simple_qa/index.html', locals())
-
-
-def qareports(request):
-    qareports = QAReport.objects.all()
-    paginator = Paginator(qareports, 20) # Show 20 qareports per page.
-    try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-
-    try:
-        obj_page = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        obj_page = paginator.page(paginator.num_pages)
-
-    return render_to_response('simple_qa/qareports.html', locals())
 
 
 def qareport_detail(request, qareport_id):
     return_dict = {}
     qareport = QAReport.objects.get(id__iexact=qareport_id)
     return_dict['qareport'] = qareport
-    return_dict['css_url'] = '../../media/css/qareport_detail.css'
-    return render_to_response('simple_qa/qareport_detail.html', return_dict)
-
-
-from django.db.models import Q
-from itertools import chain
+    return render_to_response('simple_qa/qareport_detail.html', return_dict, 
+                              context_instance=RequestContext(request))
 
 
 def advanced_search(request):
-    # Return:
-    # return_dict['form']
-    # return_dict['result_message']
-    # return_dict['result_page']
     return_dict = {}
 
     if request.method == 'GET':
@@ -107,13 +79,10 @@ def advanced_search(request):
             return_dict['page'] = page
             return_dict['fields'] = request.GET.getlist('fields')
             query_dict = request.GET.copy()
-            #query_dict = query_dict.copy()
             try:
                 del query_dict['page']
             except KeyError:
                 pass
-            #query_dict.appendlist(request.GET.getlist('query'))
-            #query_dict.appendlist(request.GET.getlist('fields').urlencode())
             return_dict['query_url'] = query_dict.urlencode()
 
         else:
@@ -126,9 +95,8 @@ def advanced_search(request):
     else:
         return_dict['form'] = AdvancedSearch()
 
-    return_dict['detail_url'] = "../../qareports"
-    return_dict['css_url'] = "../../media/css/base_wave.css"
-    return render_to_response('simple_qa/search.html', return_dict)
+    return render_to_response('simple_qa/search.html', return_dict, 
+                              context_instance=RequestContext(request))
 
 
 def simple_search(request):
@@ -189,9 +157,8 @@ def simple_search(request):
         form = SimpleSearch()
         return_dict = {'form': form}
 
-    return_dict['detail_url'] = "../qareports"
-    return_dict['css_url'] = "../media/css/base_wave.css"
-    return render_to_response('simple_qa/search.html', return_dict)
+    return render_to_response('simple_qa/search.html', return_dict, 
+                              context_instance=RequestContext(request))
 
 
 def model_search(request):
@@ -206,5 +173,5 @@ def model_search(request):
         pass
     else:
         return_dict['form'] = QAReportForm()
-    return_dict['css_url'] = "../../media/css/base_wave.css"
-    return render_to_response('simple_qa/search.html', return_dict)
+    return render_to_response('simple_qa/search.html', return_dict, 
+                              context_instance=RequestContext(request))

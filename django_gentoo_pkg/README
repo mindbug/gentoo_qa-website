@@ -23,17 +23,16 @@ CSS:                'site_media/css/*'
 Graphics:           'site_media/gfx/*'
 
 
-##############
-#### TODO ####
-##############
-* The advanced search logic is bad, very bad.
-* Add generic details view of the db items.
-* Add support for short_desc from pkgcore-checks.
-* Add support for sorting.
-* Add links between the search views.
-* Improve the advanced search form.
-* Remove testing code.
+##################
+#### TODO v.1 ####
+##################
+* Add better urls: website/arch/category/package/version/$
+* Improve the advanced search form and logic.
+* Style the links between the views.
 * Fix the empty form look.
-* Add pictures.
-* Refactor the view.
-* Add JavaScript.
+
+##################
+#### TODO v.2 ####
+##################
+* Add support for sorting.
+* Implement caching.
