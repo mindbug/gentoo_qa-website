@@ -39,6 +39,24 @@
     {% endblock %}
     </div>
 
+    <div class="div_content" id="pagination">
+    {% block pagination %}
+    {% if result_page %}
+        <span class="step-links">
+        {% if result_page.has_previous %}
+            <a href="?{{ query_url }}&amp;page={{ result_page.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
+        </span>
+        {% if result_page.has_next %}
+            <a href="?{{ query_url }}&amp;page={{ result_page.next_page_number }}">next</a>
+        {% endif %}
+        </span>
+    {% endif %}
+    {% endblock %}
+    </div>
+
     <div class="div_content" id="footer_div">
     {% block footer %}
     {% endblock %}

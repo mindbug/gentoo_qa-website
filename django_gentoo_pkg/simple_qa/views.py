@@ -9,15 +9,21 @@ from django_gentoo_pkg.simple_qa.forms import SimpleSearch, AdvancedSearch
 from django_gentoo_pkg.simple_qa.forms import QAReportForm
 
 
-def qareport_detail(request, qareport_id):
+def welcome(request):
+    return render_to_response('simple_qa/welcome.html', 
+        context_instance=RequestContext(request))
+
+
+def report_detail(request, report_id):
     return_dict = {}
-    qareport = QAReport.objects.get(id__iexact=qareport_id)
-    return_dict['qareport'] = qareport
+    report = QAReport.objects.get(id__iexact=report_id)
+    return_dict['qareport'] = report
     return render_to_response('simple_qa/qareport_detail.html', return_dict, 
                               context_instance=RequestContext(request))
 
 
-def advanced_search(request):
+def search_advanced(request):
+    # Returns a list of QAReport objects matching the form query.
     return_dict = {}
 
     if request.method == 'GET':
@@ -99,7 +105,8 @@ def advanced_search(request):
                               context_instance=RequestContext(request))
 
 
-def simple_search(request):
+def search(request):
+    # Returns a list of QAReport objects matching the form query.
     return_dict = {}
 
     if request.method == 'GET':
@@ -158,10 +165,38 @@ def simple_search(request):
         return_dict = {'form': form}
 
     return render_to_response('simple_qa/search.html', return_dict, 
-                              context_instance=RequestContext(request))
+        context_instance=RequestContext(request))
 
 
-def model_search(request):
+def listing(request, arch, category="", package=""):
+    # Returns a list of arch, category, or packages.
+    return_dict = {}
+    results = QAReport.objects.filter(arch__iexact=arch)
+    if results:
+        if category:
+            results = results.filter(category__iexact=category)
+            if package:
+                results = results.filter(package__iexact=package)
+
+        results = list(results)
+
+    paginator = Paginator(results, 30) 
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+    try:
+        result_page = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        result_page = paginator.page(paginator.num_pages)
+
+    return_dict['result_message'] = result_message
+    return_dict['result_page'] = result_page
+    return render_to_response('simple_qa/listing.html', return_dict,
+        context_instance=RequestContext(request))
+
+
+def search_model(request):
     return_dict = {}
     if request.method == 'GET':
         form = QAReportForm(request.GET)

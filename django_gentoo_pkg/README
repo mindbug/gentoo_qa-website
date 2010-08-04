@@ -30,6 +30,7 @@ Graphics:           'site_media/gfx/*'
 * Improve the advanced search form and logic.
 * Style the links between the views.
 * Fix the empty form look.
+* Correct the HTML in base.html.
 
 ##################
 #### TODO v.2 ####
