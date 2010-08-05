@@ -168,19 +168,23 @@ def search(request):
         context_instance=RequestContext(request))
 
 
-def listing(request, arch, category="", package=""):
+def reports(request, arch, category=None, package=None):
     # Returns a list of arch, category, or packages.
     return_dict = {}
-    results = QAReport.objects.filter(arch__iexact=arch)
-    if results:
+    # Remove QAReports which have spaces and n/a as arch.
+    q = (Q(arch__icontains='n/a') | Q(arch__icontains=' '))
+    reports = QAReport.objects.exclude(q)
+    if reports:
         if category:
-            results = results.filter(category__iexact=category)
+            #reports = reports.filter(category__icontains=category)
+            pass
             if package:
-                results = results.filter(package__iexact=package)
+                #reports = reports.filter(package__icontains=package)
+                pass
 
-        results = list(results)
+        reports = list(reports)
 
-    paginator = Paginator(results, 30) 
+    paginator = Paginator(reports, 30) 
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:
@@ -190,9 +194,18 @@ def listing(request, arch, category="", package=""):
     except (EmptyPage, InvalidPage):
         result_page = paginator.page(paginator.num_pages)
 
-    return_dict['result_message'] = result_message
     return_dict['result_page'] = result_page
     return render_to_response('simple_qa/listing.html', return_dict,
+        context_instance=RequestContext(request))
+
+
+def arches(request):
+    return_dict = {}
+    q = (Q(arch__icontains='n/a') | Q(arch__icontains=' '))
+    reports = QAReport.objects.exclude(q)
+    arches = sorted(set(reports.values_list('arch', flat=True)))
+    return_dict['arches'] = arches
+    return render_to_response('simple_qa/arches.html', return_dict, 
         context_instance=RequestContext(request))
 
 

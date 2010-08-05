@@ -30,6 +30,7 @@ Graphics:           'site_media/gfx/*'
 * Improve the advanced search form and logic.
 * Style the links between the views.
 * Fix the empty form look.
+* Double check the urls; make sure they look good.
 * Correct the HTML in base.html.
 
 ##################

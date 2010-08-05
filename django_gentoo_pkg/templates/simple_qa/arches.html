@@ -1,0 +1,15 @@
+{% extends "simple_qa/base.html" %}
+{% block content %}
+{% if arches %}
+<table>
+<tr>
+    <th>Arches</th>
+</tr>
+{% for arch in arches %}
+<tr class="{% cycle 'row1' 'row2' %}">
+    <td>{{ arch }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+{% endblock %}
