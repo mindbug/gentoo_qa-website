@@ -26,7 +26,6 @@ Graphics:           'site_media/gfx/*'
 ##################
 #### TODO v.1 ####
 ##################
-* Add better urls: website/arch/category/package/version/$
 * Improve the advanced search form and logic.
 * Style the links between the views.
 * Fix the empty form look.

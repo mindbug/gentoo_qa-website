@@ -8,6 +8,8 @@ from django_gentoo_pkg.simple_qa.models import QAReport
 from django_gentoo_pkg.simple_qa.forms import SimpleSearch, AdvancedSearch
 from django_gentoo_pkg.simple_qa.forms import QAReportForm
 
+# Notes, if using MySQL as the database backend, substitute icontains for
+# search in the QuerySet calls. It is allegedly much faster due to indexing.
 
 def welcome(request):
     return render_to_response('simple_qa/welcome.html', 
@@ -169,22 +171,21 @@ def search(request):
 
 
 def reports(request, arch, category=None, package=None):
-    # TODO broken, oops.
-    # Returns a list of arch, category, or packages.
     return_dict = {}
-    # Remove QAReports which have spaces and n/a as arch.
-    q = (Q(arch__icontains='n/a') | Q(arch__icontains=' '))
+    q = Q(arch__icontains='n/a')
     reports = QAReport.objects.exclude(q)
+    # We want objects which have 'arch' in their arch field, surrounded by
+    # nothing other than 'nothing' and ' '.
+    reports = reports.filter(arch__regex=r'\s*'+arch+r'\s*$')
     if reports:
         if category:
-            #reports = reports.filter(category__icontains=category)
+            reports = reports.filter(category__iexact=category)
             pass
             if package:
-                #reports = reports.filter(package__icontains=package)
+                reports = reports.filter(package__iexact=package)
                 pass
 
-        reports = list(reports)
-
+    reports = list(reports)
     paginator = Paginator(reports, 30) 
     try:
         page = int(request.GET.get('page', '1'))
