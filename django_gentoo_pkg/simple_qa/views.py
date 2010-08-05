@@ -169,6 +169,7 @@ def search(request):
 
 
 def reports(request, arch, category=None, package=None):
+    # TODO broken, oops.
     # Returns a list of arch, category, or packages.
     return_dict = {}
     # Remove QAReports which have spaces and n/a as arch.
