@@ -175,7 +175,7 @@ def reports(request, arch, category=None, package=None):
     q = Q(arch__icontains='n/a')
     reports = QAReport.objects.exclude(q)
     # We want objects which have 'arch' in their arch field, surrounded by
-    # nothing other than 'nothing' and ' '.
+    # nothing other than nothing and ' '.
     reports = reports.filter(arch__regex=r'\s*'+arch+r'\s*$')
     if reports:
         if category:

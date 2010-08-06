@@ -1,6 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en">
 <head>
+    <base />
+    <meta name="description" content="Searchable Gentoo linux QA database" />
+    <meta name="keywords" content="Gentoo, linux, QA, quality assurance" />
     <title>The Gentoo QA Website - {% block title %}{% endblock %}
     </title>
     <link rel="stylesheet" type="text/css" href="{{ media_url }}css/base_wave.css" />
@@ -14,11 +18,18 @@
 
     <div class="div_content" id="nav_div">
     {% block navigation %}
-    <ul class="navigation">
-        <li><a href="http://www.gentoo.org">gentoo.org</a></li>
-        <li><a href="{{ search_url }}">search</a></li>
-        <li><a href="{{ search_url }}advanced">advanced search</a></li>
-        <li><a href="{{ reports_url }}">browse reports</a></li>
+    <ul class="nav">
+        <li class="nav"><a class="nav" href="{{ base_url }}">home</a></li>
+        <li class="nav"><a class="nav" href="{{ search_url }}">search</a></li>
+        <li class="nav">
+            <a class="nav" href="{{ search_url }}advanced">advanced search</a>
+        </li>
+        <li class="nav">
+            <a class="nav" href="{{ reports_url }}">browse reports</a>
+        </li>
+        <li class="nav">
+            <a class="nav" href="http://www.gentoo.org">gentoo.org</a>
+        </li>
     </ul>
     {% endblock %}
     </div>

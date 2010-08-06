@@ -26,6 +26,13 @@ th {
     background-color: #776699;
     color: #fff;
 }
+a {
+    text-decoration: none;
+    color: #c00050;
+}
+a:hover {
+    color: #f04090;
+}
 .div_content {
     /* border: 1px solid #ccccff; */
     padding: 20px;
@@ -72,4 +79,33 @@ th {
 #result_message {}
 #pagination {
     padding-top: 0px;
+}
+#nav_div {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+ul.nav {
+    width: 100%;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+li.nav {
+    width: 20%;
+    float: left;
+}
+a.nav {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    color: #776699;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+a.nav:hover {
+    color: #ddddff;
 }
