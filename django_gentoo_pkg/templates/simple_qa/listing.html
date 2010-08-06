@@ -16,11 +16,16 @@
 </tr>
 {% for result in result_page.object_list %}
 <tr class="{% cycle 'row1' 'row2' %}">
+    {% if arch %}
+    <td>
+    <a href="{{ reports_url }}{{ arch }}/{{ result.category }}">{{ result.category }}</a></td>
+    {% else %}
     <td>{{ result.category }}</td>
+    {% endif %}
     <td><a href="{{ detail_url }}{{ result.id }}">{{ result.package }}</a>
     </td>
     <td>{{ result.version }}</td>
-    <td>{{ result.arch }}</td>
+    <td><a href="{{ reports_url }}{{ arch }}">{{ result.arch }}</a></td>
     <td>{{ result.keywords }}</td>
     <td>{{ result.qa_class }}</td>
 </tr>

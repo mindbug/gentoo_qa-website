@@ -19,7 +19,7 @@ td, th {
     padding: 3px 7px 2px 7px;
 }
 th {
-    font-size: 1.4em;
+    /* font-size: 1.4em; */
     text-align: left;
     padding-top: 5px;
     padding-bottom: 4px;
@@ -108,4 +108,23 @@ a.nav {
 }
 a.nav:hover {
     color: #ddddff;
+}
+ul#arch {
+    list-style-type: none;
+    overflow: hidden;
+}
+li#arch {
+    width: 10em;
+    float: left;
+}
+a#arch {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+h3#arch {
+    text-align: center;
 }

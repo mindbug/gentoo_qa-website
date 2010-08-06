@@ -16,7 +16,7 @@
 </tr>
 {% for result in result_page.object_list %}
 <tr class="{% cycle 'row1' 'row2' %}">
-    <td><a href="">{{ result.category }}</a></td>
+    <td>{{ result.category }}</td>
     <td><a href="{{ detail_url }}{{ result.id }}">{{ result.package }}</a>
     </td>
     <td>{{ result.version }}</td>

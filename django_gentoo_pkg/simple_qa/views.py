@@ -179,9 +179,11 @@ def reports(request, arch, category=None, package=None):
     reports = reports.filter(arch__regex=r'\s*'+arch+r'\s*$')
     if reports:
         if category:
+            return_dict['category'] = category
             reports = reports.filter(category__iexact=category)
             pass
             if package:
+                return_dict['package'] = package
                 reports = reports.filter(package__iexact=package)
                 pass
 
@@ -197,6 +199,7 @@ def reports(request, arch, category=None, package=None):
         result_page = paginator.page(paginator.num_pages)
 
     return_dict['result_page'] = result_page
+    return_dict['arch'] = arch
     return render_to_response('simple_qa/listing.html', return_dict,
         context_instance=RequestContext(request))
 

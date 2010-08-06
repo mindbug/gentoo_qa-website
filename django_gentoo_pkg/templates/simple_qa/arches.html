@@ -1,15 +1,13 @@
 {% extends "simple_qa/base.html" %}
 {% block content %}
+<h3 id="arch">Browse by architecture</h3>
 {% if arches %}
-<table>
-<tr>
-    <th>Arches</th>
-</tr>
+<ul id="arch">
 {% for arch in arches %}
-<tr class="{% cycle 'row1' 'row2' %}">
-    <td>{{ arch }}</td>
-</tr>
+<li id="arch">
+    <a id="arch" href="{{ reports_url }}{{ arch }}">{{ arch }}</a>
+</li>
 {% endfor %}
-</table>
+</ul>
 {% endif %}
 {% endblock %}
