@@ -5,74 +5,50 @@
     <base />
     <meta name="description" content="Searchable Gentoo linux QA database" />
     <meta name="keywords" content="Gentoo, linux, QA, quality assurance" />
-    <title>The Gentoo QA Website - {% block title %}{% endblock %}
-    </title>
-    <link rel="stylesheet" type="text/css" href="{{ media_url }}css/base_wave.css" />
+    <title>Gentoo QA</title>
+    <link href="{{ media_url }}css/grass_purple.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
-<div id="div_body">
-    <div class="div_content" id="header_div">
-    {% block header %}
-    {% endblock %}
-    </div>
 
-    <div class="div_content" id="nav_div">
-    {% block navigation %}
-    <ul class="nav">
-        <li class="nav"><a class="nav" href="{{ base_url }}">home</a></li>
-        <li class="nav"><a class="nav" href="{{ search_url }}">search</a></li>
-        <li class="nav">
-            <a class="nav" href="{{ search_url }}advanced">advanced search</a>
-        </li>
-        <li class="nav">
-            <a class="nav" href="{{ reports_url }}">browse</a>
-        </li>
-        <li class="nav">
-            <a class="nav" href="http://www.gentoo.org">gentoo.org</a>
-        </li>
-    </ul>
-    {% endblock %}
-    </div>
-
-    <div class="div_content" id="search_div">
-    {% block search %}
-        <form id="search_form" action="." method="GET">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if form %}
-                <input type="submit" value="Submit" />
-            {% endif %}
-        </form>
-    {% endblock %}
-    </div>
-
-    <div class="div_content" id="content_div">
-    {% block content %}
-    {% endblock %}
-    </div>
-
-    <div class="div_content" id="pagination">
-    {% block pagination %}
-    {% if result_page %}
-        <span class="step-links">
-        {% if result_page.has_previous %}
-            <a href="?{{ query_url }}&amp;page={{ result_page.previous_page_number }}">previous</a>
-        {% endif %}
-        <span class="current">
-            Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
-        </span>
-        {% if result_page.has_next %}
-            <a href="?{{ query_url }}&amp;page={{ result_page.next_page_number }}">next</a>
-        {% endif %}
-        </span>
-    {% endif %}
-    {% endblock %}
-    </div>
-
-    <div class="div_content" id="footer_div">
-    {% block footer %}
-    {% endblock %}
-    </div>
+<div id="header">
+    <h1>gentoo qa</h1>
+    <p>gentoo linux quality assurance,</p>
+    <p>powered by pkgcore</p>
 </div>
+
+<div id="sidebar">
+{% block sidebar %}
+<ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Search</a>
+        <ul>
+            <li><a href="#">Advanced search</a></li>
+        </ul>
+    </li>
+    <li><a href="#">Browse architecture</a>
+        {% if arches %}
+        <ul>
+            {% for arch in arches %}
+            <li><a href="{{ reports_url }}{{ arch }}">{{ arch }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+</ul>
+{% endblock %}
+</div>
+
+<div id="wrapper">
+<div id="content">
+<h2>Content header</h2>
+<p>This is the content, yey!</p>
+{% block content %} {% endblock %}
+</div>
+
+<div id="footer">
+<p>copyright 2010 themindbug@gmail.com</p>
+</div>
+</div>
+
 </body>
 </html>

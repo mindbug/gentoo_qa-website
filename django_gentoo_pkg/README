@@ -26,12 +26,13 @@ Graphics:           'site_media/gfx/*'
 ##################
 #### TODO v.1 ####
 ##################
-* Improve the advanced search form and logic.
+* Make a new --- improved --- CSS theme.
 * Fix the empty form look.
 * Double check the urls; make sure they look good.
 
 ##################
 #### TODO v.2 ####
 ##################
+* Improve the advanced search form and logic.
 * Add support for sorting.
 * Implement caching.

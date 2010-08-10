@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Greeny Grass
+Description: A two-column, fixed-width design.
+Version    : 1.0
+Released   : 20080208
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Gentoo Linux QA website</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="{{ media_url }}css/grass.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+<!-- start header -->
+<div id="header">
+	<h1>gentoo QA</h1>
+	<p>gentoo linux QA website, powered by pkgcore</p>
+</div>
+<!-- end header -->
+<!-- start page -->
+<div id="page">
+
+	<!-- start content -->
+	<div id="content">
+    {% block content %}
+    {% endblock %}
+	</div>
+	<!-- end content -->
+
+	<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li>
+				<h2>Navigate</h2>
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="{{ search_url }}">Search</a></li>
+					<li><a href="#">Advanced search</a></li>
+				</ul>
+			</li>
+			<li>
+				<h2>Browse architecture</h2>
+				<ul>
+					<li><a href="#">x86</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->
+</div>
+</div>
+<!-- end page -->
+<div id="footer">
+	<p>&copy;2007 All Rights Reserved. &nbsp;&bull;&nbsp; Original design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> &nbsp;&bull;&nbsp; Icons by <a href="http://www.famfamfam.com/">FAMFAMFAM</a>.</p>
+</div>
+</body>
+</html>
