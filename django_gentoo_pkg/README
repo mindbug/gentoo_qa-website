@@ -26,8 +26,9 @@ Graphics:           'site_media/gfx/*'
 ##################
 #### TODO v.1 ####
 ##################
-* Make a new --- improved --- CSS theme.
-* Fix the empty form look.
+* Check the views, do they look good enough?
+* New simpler menu buttons?
+* Implement CSS class 'here'.
 * Double check the urls; make sure they look good.
 
 ##################

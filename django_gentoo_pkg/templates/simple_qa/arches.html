@@ -1,4 +1,12 @@
-{% extends "simple_qa/base.html" %}
+{% extends "simple_qa/grass.html" %}
+
+{% block links %}
+    <li><a href="{{ base_url }}">Home</a></li>
+    <li><a href="{{ search_url }}">Search</a></li>
+    <li><a href="{{ search_url }}advanced">Advanced search</a></li>
+    <li class="selected"><a href="{{ reports_url }}">Browse architecture</a></li>
+{% endblock %}
+
 {% block content %}
 <h3 id="arch">Browse by architecture</h3>
 {% if arches %}

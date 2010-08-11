@@ -17,38 +17,25 @@
 </div>
 
 <div id="sidebar">
-{% block sidebar %}
 <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Search</a>
-        <ul>
-            <li><a href="#">Advanced search</a></li>
-        </ul>
-    </li>
-    <li><a href="#">Browse architecture</a>
-        {% if arches %}
-        <ul>
-            {% for arch in arches %}
-            <li><a href="{{ reports_url }}{{ arch }}">{{ arch }}</a></li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    </li>
-</ul>
+{% block links %}
+    <li><a class="here" href="{{ base_url }}">Home</a></li>
+    <li><a href="{{ search_url }}">Search</a></li>
+    <li><a href="{{ search_url }}advanced">Advanced search</a></li>
+    <li><a href="{{ reports_url }}">Browse architecture</a></li>
 {% endblock %}
+</ul>
 </div>
 
 <div id="wrapper">
 <div id="content">
-<h2>Content header</h2>
-<p>This is the content, yey!</p>
 {% block content %} {% endblock %}
 </div>
 
 <div id="footer">
 <p>copyright 2010 themindbug@gmail.com</p>
 </div>
-</div>
 
+</div>
 </body>
 </html>

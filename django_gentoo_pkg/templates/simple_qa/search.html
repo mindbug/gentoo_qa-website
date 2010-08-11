@@ -1,5 +1,19 @@
-{% extends "simple_qa/base.html" %}
+{% extends "simple_qa/grass.html" %}
+
+{% block links %}
+    <li><a href="{{ base_url }}">Home</a></li>
+    <li class="selected"><a href="{{ search_url }}">Search</a></li>
+    <li><a href="{{ search_url }}advanced">Advanced search</a></li>
+    <li><a href="{{ reports_url }}">Browse architecture</a></li>
+{% endblock %}
+
 {% block content %}
+<form id="search_form" action="." method="GET">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+
 {% if result_message %}
 <h3 id="result_message">{{ result_message|default:"No results to display." }}</h3>
 {% endif %}
@@ -26,5 +40,18 @@
 </tr>
 {% endfor %}
 </table>
+
+        <span class="step-links">
+        {% if result_page.has_previous %}
+            <a href="?{{ query_url }}&amp;page={{ result_page.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
+        </span>
+        {% if result_page.has_next %}
+            <a href="?{{ query_url }}&amp;page={{ result_page.next_page_number }}">next</a>
+        {% endif %}
+        </span>
+
 {% endif %}
 {% endblock %}

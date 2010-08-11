@@ -1,0 +1,13 @@
+{% extends "simple_qa/grass.html" %}
+
+{% block links %}
+    <li class="selected"> <a href="{{ base_url }}">Home</a> </li>
+    <li> <a href="{{ search_url }}">Search</a> </li>
+    <li> <a href="{{ search_url }}advanced">Advanced search</a> </li>
+    <li> <a href="{{ reports_url }}">Browse architecture</a> </li>
+{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Gentoo linux QA website</h2>
+<p>-- "emerging the root issues since '10"</p>
+{% endblock %}
