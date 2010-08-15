@@ -1,0 +1,38 @@
+{% extends "simple_qa/bluestrike_base.html" %}
+
+{% block menubar %}
+    <li><a href="{{ base_url }}">Home</a></li>
+    <li><a href="{{ search_url }}">Search</a></li>
+    <li><a href="{{ search_url }}advanced">Advanced search</a></li>
+    <li>
+        <a class="selected" href="{{ reports_url }}">Browse architecture</a>
+    </li>
+{% endblock %}
+
+{% block submenu %}
+{% if arches %}
+<div id="submenu">
+<ul>
+    {% for arch in arches %}
+    <li>
+        <a href="{{ reports_url }}{{ arch }}">{{ arch }}</a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<h2>Browse QA reports by architecture</h2>
+
+{% if arches %}
+<ul id="arch">
+{% for arch in arches %}
+<li>
+    <a href="{{ reports_url }}{{ arch }}">{{ arch }}</a>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

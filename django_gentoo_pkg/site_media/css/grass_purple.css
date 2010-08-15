@@ -72,6 +72,7 @@ a:hover {
     /* list-style-type: none; */
     list-style: none;
     margin: 0;
+    margin-top: 20px;
     padding: 0;
     border: none;
 }
@@ -79,7 +80,7 @@ a:hover {
     margin: 0;
     padding: 0;
     /* border: 1px solid yellow; */
-    background: url('../gfx/purple_grass/purple_button.jpg') no-repeat 0 0;
+    background: url('../gfx/purple_grass/grey_button.jpg') no-repeat 0 0;
     height: 100px;
     width: 220px;
 }
@@ -95,7 +96,8 @@ a:hover {
     text-align: center;
     font-size: 18px;
     line-height: 70px;
-    color: #523a5d;
+    /* color: #523a5d; */
+    color: #454545;
 }
 #sidebar li a:hover {
     /* color: #f3daff; */
@@ -103,6 +105,7 @@ a:hover {
 }
 #sidebar li.selected a {
     color: #f8e8ff;
+    background: url('../gfx/purple_grass/purple_button.jpg') no-repeat 0 0;
 }
 #content {
     /* width: 800px; */

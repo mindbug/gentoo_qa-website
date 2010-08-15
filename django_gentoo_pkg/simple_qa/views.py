@@ -12,9 +12,7 @@ from django_gentoo_pkg.simple_qa.forms import QAReportForm
 # search in the QuerySet calls. It is allegedly much faster due to indexing.
 
 def home(request):
-    return_dict = {}
-    return_dict['active_link'] = 'home'
-    return render_to_response('simple_qa/home.html', return_dict,
+    return render_to_response('simple_qa/bluestrike_home.html',
         context_instance=RequestContext(request))
 
 
@@ -22,7 +20,7 @@ def report_detail(request, report_id):
     return_dict = {}
     report = QAReport.objects.get(id__iexact=report_id)
     return_dict['qareport'] = report
-    return render_to_response('simple_qa/qareport_detail.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_detail.html', return_dict, 
                               context_instance=RequestContext(request))
 
 
@@ -105,15 +103,13 @@ def search_advanced(request):
     else:
         return_dict['form'] = AdvancedSearch()
 
-    return_dict['active_link'] = 'search_advanced'
-    return render_to_response('simple_qa/search.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_search.html', return_dict, 
                               context_instance=RequestContext(request))
 
 
 def search(request):
     # Returns a list of QAReport objects matching the form query.
     return_dict = {}
-    return_dict['active_link'] = 'search'
 
     if request.method == 'GET':
         form = SimpleSearch(request.GET)
@@ -170,13 +166,12 @@ def search(request):
         form = SimpleSearch()
         return_dict = {'form': form}
 
-    return render_to_response('simple_qa/search.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_search.html', return_dict, 
         context_instance=RequestContext(request))
 
 
 def reports(request, arch, category=None, package=None):
     return_dict = {}
-    return_dict['active_link'] = 'browse'
     q = Q(arch__icontains='n/a')
     reports = QAReport.objects.exclude(q)
     # We want objects which have 'arch' in their arch field, surrounded by
@@ -205,7 +200,7 @@ def reports(request, arch, category=None, package=None):
 
     return_dict['result_page'] = result_page
     return_dict['arch'] = arch
-    return render_to_response('simple_qa/listing.html', return_dict,
+    return render_to_response('simple_qa/bluestrike_reports.html', return_dict,
         context_instance=RequestContext(request))
 
 
@@ -215,7 +210,7 @@ def arches(request):
     reports = QAReport.objects.exclude(q)
     arches = sorted(set(reports.values_list('arch', flat=True)))
     return_dict['arches'] = arches
-    return render_to_response('simple_qa/arches.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_arches.html', return_dict, 
         context_instance=RequestContext(request))
 
 
@@ -231,5 +226,5 @@ def search_model(request):
         pass
     else:
         return_dict['form'] = QAReportForm()
-    return render_to_response('simple_qa/search.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_search.html', return_dict, 
                               context_instance=RequestContext(request))

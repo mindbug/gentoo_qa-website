@@ -1,18 +1,18 @@
-{% extends "simple_qa/grass.html" %}
+{% extends "simple_qa/bluestrike_base.html" %}
 
 {% block links %}
+<ul>
     <li><a href="{{ base_url }}">Home</a></li>
-    <li class="selected"><a href="{{ search_url }}">Search</a></li>
+    <li><a href="{{ search_url }}">Search</a></li>
     <li><a href="{{ search_url }}advanced">Advanced search</a></li>
-    <li><a href="{{ reports_url }}">Browse architecture</a></li>
+    <li class="selected">
+        <a href="{{ reports_url }}">Browse architecture</a>
+    </li>
+</ul>
 {% endblock %}
 
 {% block content %}
-<form id="search_form" action="." method="GET">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" />
-</form>
+<h2>Browse the qa report database</h2>
 
 {% if result_message %}
 <h3 id="result_message">{{ result_message|default:"No results to display." }}</h3>
@@ -30,28 +30,20 @@
 </tr>
 {% for result in result_page.object_list %}
 <tr class="{% cycle 'row1' 'row2' %}">
+    {% if arch %}
+    <td>
+    <a href="{{ reports_url }}{{ arch }}/{{ result.category }}">{{ result.category }}</a></td>
+    {% else %}
     <td>{{ result.category }}</td>
+    {% endif %}
     <td><a href="{{ detail_url }}{{ result.id }}">{{ result.package }}</a>
     </td>
     <td>{{ result.version }}</td>
-    <td>{{ result.arch }}</td>
+    <td><a href="{{ reports_url }}{{ arch }}">{{ result.arch }}</a></td>
     <td>{{ result.keywords }}</td>
     <td>{{ result.qa_class }}</td>
 </tr>
 {% endfor %}
 </table>
-
-        <span class="step-links">
-        {% if result_page.has_previous %}
-            <a href="?{{ query_url }}&amp;page={{ result_page.previous_page_number }}">previous</a>
-        {% endif %}
-        <span class="current">
-            Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
-        </span>
-        {% if result_page.has_next %}
-            <a href="?{{ query_url }}&amp;page={{ result_page.next_page_number }}">next</a>
-        {% endif %}
-        </span>
-
 {% endif %}
 {% endblock %}

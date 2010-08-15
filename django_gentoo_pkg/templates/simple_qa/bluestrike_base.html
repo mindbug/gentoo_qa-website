@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    <title>Gentoo linux QA</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ media_url }}css/bluestrike.css" />
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+        <a href="{{ base_url }}"><img src="{{ media_url }}gfx/bluestrike/logo_header.gif" alt="" width="203" height="102" class="logo" /></a>
+        <h1>Gentoo linux QA</h1>
+        <p>powered by pkgcore</p>
+    </div>
+
+    <ul id="menubar">
+    {% block menubar %}
+        <li><a href="{{ base_url }}">Home</a></li>
+        <li><a href="{{ search_url }}">Search</a></li>
+        <li><a href="{{ search_url }}advanced">Advanced search</a></li>
+        <li><a href="{{ reports_url }}">Browse architecture</a></li>
+    {% endblock %}
+    </ul>
+
+    <ul id="submenu">
+    {% block submenu %} {% endblock %}
+    </ul>
+
+    <div id="content">
+    {% block content %} {% endblock %}
+    </div>
+
+    <div id="footer">
+        <p>copyright 2010 themindbug@gmail.com</p>
+    </div> 
+</div>
+</body>
+</html>
