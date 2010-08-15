@@ -14,13 +14,20 @@
     </div>
 
     <ul id="menubar">
-    {% block menubar %}
         <li><a href="{{ base_url }}">Home</a></li>
-        <li><a href="{{ search_url }}">Search</a></li>
-        <li><a href="{{ search_url }}advanced">Advanced search</a></li>
-        <li><a href="{{ reports_url }}">Browse architecture</a></li>
-    {% endblock %}
+        <li><a href="{{ search_url }}">Search</a>
+            <ul>
+                <li><a href="{{ search_url }}advanced">Advanced search</a></li>
+            </ul>
+        </li>
+        <li><a href="{{ reports_url }}">Browse architectures</a>
+            <ul>
+                <li><a href="{{ reports_url }}amd64">amd64</a></li>
+                <li><a href="{{ reports_url }}x86">x86</a></li>
+            </ul>
+        </li>
     </ul>
+    <div class="clear_left"></div>
 
     <ul id="submenu">
     {% block submenu %} {% endblock %}
