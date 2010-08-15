@@ -14,27 +14,42 @@
     </div>
 
     <ul id="menubar">
-        <li><a href="{{ base_url }}">Home</a></li>
-        <li><a href="{{ search_url }}">Search</a>
+    {% block menubar %}
+        <li>
+            {% block a_home %}
+            <a href="{{ base_url }}">Home</a></li>
+            {% endblock %}
+        <li>
+            {% block a_search %}
+            <a href="{{ search_url }}">Search</a>
+            {% endblock %}
             <ul>
                 <li><a href="{{ search_url }}advanced">Advanced search</a></li>
             </ul>
         </li>
-        <li><a href="{{ reports_url }}">Browse architectures</a>
+        <li>
+            {% block a_browse %}
+            <a href="{{ reports_url }}">Browse architectures</a>
+            {% endblock %}
             <ul>
-                <li><a href="{{ reports_url }}amd64">amd64</a></li>
-                <li><a href="{{ reports_url }}x86">x86</a></li>
+            {% if menu_arches %}
+            {% for arch in menu_arches %}
+                <li><a href="{{ reports_url }}{{ arch }}">{{ arch }}</a></li>
+            {% endfor %}
+            {% endif %}
             </ul>
         </li>
+    {% endblock %}
     </ul>
     <div class="clear_left"></div>
 
-    <ul id="submenu">
-    {% block submenu %} {% endblock %}
-    </ul>
 
     <div id="content">
-    {% block content %} {% endblock %}
+    <ul id="submenu">
+    {% block submenu %}{% endblock %}
+    </ul>
+
+    {% block content %}{% endblock %}
     </div>
 
     <div id="footer">

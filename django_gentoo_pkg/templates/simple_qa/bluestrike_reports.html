@@ -1,14 +1,17 @@
 {% extends "simple_qa/bluestrike_base.html" %}
 
-{% block links %}
-<ul>
-    <li><a href="{{ base_url }}">Home</a></li>
-    <li><a href="{{ search_url }}">Search</a></li>
-    <li><a href="{{ search_url }}advanced">Advanced search</a></li>
-    <li class="selected">
-        <a href="{{ reports_url }}">Browse architecture</a>
-    </li>
-</ul>
+{% block a_browse %}
+<a href="{{ reports_url }}" class="selected">Browse architectures</a>
+{% endblock %}
+
+{% block submenu %}
+<li><a href="{{ reports_url }}">Browse architecture</a></li>
+{% if arch %}
+<p>>></p><li><a href="{{ reports_url }}{{ arch }}">{{ arch }}</a></li>
+{% endif %}
+{% if category %}
+<p>>></p><li><a href="{{ reports_url }}{{ arch }}/{{ category }}">{{ category }}</a></li>
+{% endif %}
 {% endblock %}
 
 {% block content %}

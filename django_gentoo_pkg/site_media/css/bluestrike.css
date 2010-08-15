@@ -122,12 +122,9 @@ ul#menubar li a:hover, ul#menubar li a:focus, ul#menubar li a:active {
 	background:transparent url(../gfx/bluestrike/nav_bg.png) 0px -30px no-repeat;		
 }
 
-ul#menubar li a.selected
-{
-	height:22px;
-	background:transparent url(../gfx/bluestrike/nav_bg.png) 0px -30px no-repeat;	
-	float:left;
-	margin:0;
+ul#menubar li a.selected {
+    height: 22px;
+    background:transparent url(../gfx/bluestrike/nav_bg.png) 0px -30px no-repeat;	
 }
 
 ul#menubar li ul {
@@ -221,49 +218,24 @@ ul#menubar li a.selected
 /*  Submenu  */
 /*************/
 ul#submenu {
-	margin:0;
-	padding:0;
-	list-style-type:none;
-	width:auto;
-	position:relative;
-	/* display:block; */
-    display: none;
-	height:30px;
-	font-size:12px;
-	font-family:Arial, Helvetica, sans-serif;
-	border-bottom:1px solid #999;
-    background-color: #079fd8;
+    margin-top: -30px;
+    margin-bottom: 30px;
+    list-style: none;
 }
 
-ul#submenu li
-{
-	display:block;
-	float:left;
-	margin:0;
-	padding:0;
-}
-	
-ul#submenu li a
-{
-	display:block;
-	float:left;
-	color: #ddd;
-	text-decoration: none;
-	/* font-weight: bold;
-	padding:8px 20px 0 20px; */
-    padding: 5px;
-}
-	
-ul#submenu li a:hover, ul#submenu li a:focus, ul#submenu li a:active {
-	color: white;
-    text-decoration: underline;
+ul#submenu a, ul#submenu a:hover {
+    color: #666;
 }
 
-ul#submenu li a.selected
-{
-	display:inline;
-	float:left;
-    text-decoration: underline;
+ul#submenu p {
+    color: #079fd8;
+    display: inline;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+ul#submenu li {
+    display: inline;
 }
 
 /*************/
@@ -320,6 +292,11 @@ td {
 .row1 {background-color: white;}
 .row2 {background-color: #ddd;}
 
+ul#arches {
+    list-style: none;
+    margin-left: 20px;
+}
+
 /************/
 /*  Footer  */
 /************/
@@ -328,4 +305,7 @@ td {
     margin-bottom: 0;
     background-color: #999;
     color: white;
+    border-top: 1px solid #666;
+    border-left: 1px solid #666;
+    border-right: 1px solid #666;
 }

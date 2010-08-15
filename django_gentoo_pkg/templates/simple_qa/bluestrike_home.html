@@ -1,10 +1,7 @@
 {% extends "simple_qa/bluestrike_base.html" %}
 
-{% block menubar %}
-    <li> <a class="selected" href="{{ base_url }}">Home</a> </li>
-    <li> <a href="{{ search_url }}">Search</a> </li>
-    <li> <a href="{{ search_url }}advanced">Advanced search</a> </li>
-    <li> <a href="{{ reports_url }}">Browse architecture</a> </li>
+{% block a_home %}
+<a href="{{ base_url }}" class="selected">Home</a>
 {% endblock %}
 
 {% block content %}
