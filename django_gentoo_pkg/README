@@ -8,6 +8,16 @@ IRC nick: mindbug
 email: themindbug@gmail.com
 
 
+##############################
+#### Website URL examples ####
+##############################
+The welcome view:           'simple_qa/'
+The search view:            'simple_qa/search/'
+The advanced search view:   'simple_qa/search/advanced/'
+Browsing example:           'simple_qa/reports/x86/www-client/'
+(See 'simple_qa/urls.py' for more information)
+
+
 ##########################
 #### This is the Code ####
 ##########################
@@ -26,10 +36,7 @@ Graphics:           'site_media/gfx/*'
 ##################
 #### TODO v.1 ####
 ##################
-* Check the views, do they look good enough?
-* New simpler menu buttons?
-* Implement CSS class 'here'.
-* Double check the urls; make sure they look good.
+* Released.
 
 ##################
 #### TODO v.2 ####

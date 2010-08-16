@@ -42,14 +42,17 @@ CREATE TABLE "simple_qa_qareport" (
     "package" varchar(255) NOT NULL,
     "version" varchar(255) NOT NULL,
     "keywords" varchar(255) NOT NULL,
-    "qa_class" varchar(255) NOT NULL
+    "qa_class" varchar(255) NOT NULL,
+    "short_desc" text NOT NULL,
+    "arch" varchar(255) NOT NULL,
+    "threshold" varchar(255) NOT NULL
 );
 
 
-##############
-#### TODO ####
-##############
-* Add short_desc, arch, threshold, from pchecks into QAReport objects.
+##################
+#### TODO v.2 ####
+##################
+* Finish the test module.
 * Run from terminal.
 * Option parsing.
 * Exception handling.
