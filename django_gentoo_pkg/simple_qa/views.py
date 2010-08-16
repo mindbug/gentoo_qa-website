@@ -97,10 +97,13 @@ def search_advanced(request):
                 pass
             return_dict['query_url'] = query_dict.urlencode()
 
-        else:
+        else: # Form is not valid.
             pass
 
-        return_dict['form'] = form
+        if form.is_bound:
+            return_dict['form'] = form
+        else:
+            return_dict['form'] = AdvancedSearch()
 
     elif request.method == 'POST':
         pass
@@ -165,7 +168,8 @@ def search(request):
             return_dict['query_url'] = query_dict.urlencode()
 
         else:
-            return_dict['result_message'] = "The entry is not valid."
+            return_dict['result_message'] = (
+                "No results to display. :(")
             return_dict['form'] = form
     else:
         form = SimpleSearch()

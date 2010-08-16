@@ -16,11 +16,12 @@ CHOICES = (
 class AdvancedSearch(forms.Form):
     error_css_class = 'error'
     required_css_class = 'required'
-    query = forms.CharField(max_length=255, label="Advanced search", 
-                            initial="keywords", required=False)
+    query = forms.CharField(max_length=255, label="Search for", 
+                            initial="keywords")
     fields = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple(
                                         attrs={'class': 'checkboxes'}), 
-                                        choices=CHOICES, required=False)
+                                        choices=CHOICES, required=False,
+                                        label="in fields")
 
 
 class SimpleSearch(forms.Form):

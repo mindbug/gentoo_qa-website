@@ -297,6 +297,18 @@ ul#arches {
     margin-left: 20px;
 }
 
+div#features {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    float: left;
+}
+
+div#features ul {
+    list-style: none;
+    padding: 5px;
+}
+
 /************/
 /*  Footer  */
 /************/
@@ -305,7 +317,35 @@ ul#arches {
     margin-bottom: 0;
     background-color: #999;
     color: white;
-    border-top: 1px solid #666;
-    border-left: 1px solid #666;
-    border-right: 1px solid #666;
+    font-weight: bold;
+    border: 1px solid #666;
+}
+
+/*****************/
+/*  Django forms */
+/*****************/
+ul.errorlist {
+    list-style: none;
+    font-weight: bold;
+    color: red;
+}
+
+form.search {
+   padding: 0 20px; 
+   color: #666;
+}
+
+form.search label {
+    font-weight: bold;
+}
+
+form.search input.submit {
+    margin: 5px 0;
+}
+
+div.field_wrapper {
+}
+
+div.field_wrapper ul {
+    list-style: none;
 }

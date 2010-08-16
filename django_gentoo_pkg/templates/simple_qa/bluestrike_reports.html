@@ -5,17 +5,17 @@
 {% endblock %}
 
 {% block submenu %}
-<li><a href="{{ reports_url }}">Browse architecture</a></li>
+<li><a href="{{ reports_url }}">Browse architectures</a></li>
 {% if arch %}
-<p>>></p><li><a href="{{ reports_url }}{{ arch }}">{{ arch }}</a></li>
+<p>&#62;&#62;</p><li><a href="{{ reports_url }}{{ arch }}">{{ arch }}</a></li>
 {% endif %}
 {% if category %}
-<p>>></p><li><a href="{{ reports_url }}{{ arch }}/{{ category }}">{{ category }}</a></li>
+<p>&#62;&#62;</p><li><a href="{{ reports_url }}{{ arch }}/{{ category }}">{{ category }}</a></li>
 {% endif %}
 {% endblock %}
 
 {% block content %}
-<h2>Browse the qa report database</h2>
+<h2>Browse the QA database</h2>
 
 {% if result_message %}
 <h3 id="result_message">{{ result_message|default:"No results to display." }}</h3>
@@ -48,5 +48,17 @@
 </tr>
 {% endfor %}
 </table>
+
+<span class="step-links">
+{% if result_page.has_previous %}
+    <a href="?{{ query_url }}&amp;page={{ result_page.previous_page_number }}">previous</a>
+{% endif %}
+<span class="current">
+    Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
+</span>
+{% if result_page.has_next %}
+    <a href="?{{ query_url }}&amp;page={{ result_page.next_page_number }}">next</a>
+{% endif %}
+</span>
 {% endif %}
 {% endblock %}

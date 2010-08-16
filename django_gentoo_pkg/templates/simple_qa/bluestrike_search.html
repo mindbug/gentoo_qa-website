@@ -7,10 +7,15 @@
 {% block content %}
 <h2>Search the QA report database</h2>
 
-<form id="search_form" action="." method="GET">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" />
+<form action="." method="GET" class="search">
+{% csrf_token %}
+    {% for field in form %}
+        <div class="field_wrapper">
+            {{ field.errors }}
+            {{ field.label_tag }}: {{ field }}
+        </div>
+    {% endfor %}
+    <input class="submit" type="submit" value="search" />
 </form>
 
 {% if result_message %}
@@ -40,16 +45,16 @@
 {% endfor %}
 </table>
 
-        <span class="step-links">
-        {% if result_page.has_previous %}
-            <a href="?{{ query_url }}&amp;page={{ result_page.previous_page_number }}">previous</a>
-        {% endif %}
-        <span class="current">
-            Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
-        </span>
-        {% if result_page.has_next %}
-            <a href="?{{ query_url }}&amp;page={{ result_page.next_page_number }}">next</a>
-        {% endif %}
-        </span>
+<span class="step-links">
+{% if result_page.has_previous %}
+    <a href="?{{ query_url }}&amp;page={{ result_page.previous_page_number }}">previous</a>
+{% endif %}
+<span class="current">
+    Page {{ result_page.number }} of {{ result_page.paginator.num_pages }}.
+</span>
+{% if result_page.has_next %}
+    <a href="?{{ query_url }}&amp;page={{ result_page.next_page_number }}">next</a>
+{% endif %}
+</span>
 {% endif %}
 {% endblock %}
