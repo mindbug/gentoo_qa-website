@@ -12,7 +12,7 @@ qareport_info = {'queryset': QAReport.objects.all(),
 
 
 urlpatterns = patterns('',
-    (r'^$', welcome),
+    (r'^$', home),
     (r'^search/$', search),
     (r'^search/advanced/$', search_advanced),
     (r'^search/model/$', search_model),

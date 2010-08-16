@@ -1,0 +1,351 @@
+* {
+    margin: 0px; 
+    padding: 0px; 
+}
+
+body {
+    text-align: center; 
+    font-family: arial, verdana, sans-serif; 
+    font-size: 12px; 
+    color: #333; 
+    /* background:white url(../gfx/bluestrike/bg_page.gif) no-repeat 50% 0; */
+    line-height:18px; 
+    background-color: #ffffff;
+    min-width: 750px;
+}
+
+h1, h2, h3 {
+    color: #666; 
+}
+
+h1 { 
+    font-size: 20px; 
+    line-height: 18px;  
+}
+
+h2 { 
+    font-size:18px; 
+}
+
+h3 { 
+    font-size: 16px; 
+}
+
+a {
+    color: #079fd8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#wrapper {
+    /* width:760px;
+    margin:0 auto; 
+    */
+    width: 99%;
+    margin: 0 auto;
+}
+
+/************/
+/*  Header  */
+/************/
+#header	{
+    position:relative; 
+    display:block; 
+    /* width:760px; */
+    height:102px; 
+    background:#FFF url(../gfx/bluestrike/bg_header.gif) repeat-x; 
+}
+
+#header .logo {
+    position: absolute; 
+    left: 40px; 
+    top: 0px;
+    border: none;
+}
+
+#header h1 {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+#header p {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    color: #079fd8;
+    font-size: 16px;
+}
+
+/***************/
+/*  Main menu  */
+/***************/
+ul#menubar, ul#menubar ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul#menubar {
+	height:30px;
+	font-size:12px;
+	font-weight:bold;
+	background:transparent url(../gfx/bluestrike/nav_bg.png) repeat-x top left;
+	font-family:Arial, Helvetica, sans-serif;
+	border-bottom:1px solid #000000;
+	border-top:1px solid #000000;
+}
+
+ul#menubar li {
+    position: relative;
+    float: left;
+    width: 14em;
+}
+
+ul#menubar li a {
+    color: #999999;
+    display: block;
+    padding-top: 9px;
+}
+
+ul#menubar li a:hover, ul#menubar li a:focus, ul#menubar li a:active {
+	color:#FFFFFF;
+	height:22px;
+    text-decoration: none;
+	background:transparent url(../gfx/bluestrike/nav_bg.png) 0px -30px no-repeat;		
+}
+
+ul#menubar li a.selected {
+    height: 22px;
+    background:transparent url(../gfx/bluestrike/nav_bg.png) 0px -30px no-repeat;	
+}
+
+ul#menubar li ul {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    border: 1px solid #999;
+}
+
+ul#menubar li:hover ul {
+    display: block;
+}
+
+ul#menubar li ul li {
+}
+
+ul#menubar li ul li a:hover {
+    display: block;
+    /* background: none; */
+}
+
+/* IE hack */
+ul#menubar li > ul#menubar ul {
+    top: auto;
+    left: auto;
+}
+/* end of hack */
+
+.clear_left {
+    clear: left;
+}
+
+/********************/
+/*  Old menu style  */
+/********************/
+/*
+ul#menubar
+{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	width:auto;
+	position:relative;
+	display:block;
+	height:30px;
+	font-size:12px;
+	font-weight:bold;
+	background:transparent url(../gfx/bluestrike/nav_bg.png) repeat-x top left;
+	font-family:Arial, Helvetica, sans-serif;
+	border-bottom:1px solid #000000;
+	border-top:1px solid #000000;
+}
+
+ul#menubar li
+{
+	display:block;
+	float:left;
+	margin:0;
+	padding:0;
+}
+	
+ul#menubar li a
+{
+	display:block;
+	float:left;
+	color:#999999;
+	text-decoration:none;
+	font-weight:bold;
+	padding:8px 20px 0 20px;
+}
+	
+ul#menubar li a:hover, ul#menubar li a:focus, ul#menubar li a:active {
+	color:#FFFFFF;
+	height:22px;
+	background:transparent url(../gfx/bluestrike/nav_bg.png) 0px -30px no-repeat;		
+}
+
+ul#menubar li a.selected
+{
+	display:inline;
+	height:22px;
+	background:transparent url(../gfx/bluestrike/nav_bg.png) 0px -30px no-repeat;	
+	float:left;
+	margin:0;
+} 
+*/
+
+/*************/
+/*  Submenu  */
+/*************/
+ul#submenu {
+    margin-top: -30px;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+ul#submenu a, ul#submenu a:hover {
+    color: #666;
+}
+
+ul#submenu p {
+    color: #079fd8;
+    display: inline;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+ul#submenu li {
+    display: inline;
+}
+
+/*************/
+/*  Content  */
+/*************/
+#content {
+    background:#FFF url(../gfx/bluestrike/bg_content2.gif) repeat-x 0 0;
+    padding: 40px 10px 0;
+    min-height:543px; 
+    text-align:left;
+}
+
+#content h2 {
+    margin-bottom: 20px;
+}
+
+#content form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#content table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 700px;
+    margin: auto;
+}
+
+td, th {
+    /* border: 1px solid #cc91e7; */
+    /* border: 1px solid #7008a1; */
+    border: 1px solid #666;
+    padding: 3px 7px 2px 7px;
+}
+
+th {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    /* background-color: #8e65a1; */
+    color: white;
+    background-color: #666;
+    border-bottom: 3px solid #079fd8;
+}
+
+td {
+    color: #666;
+}
+
+.row1 {background-color: white;}
+.row2 {background-color: #ddd;}
+
+ul#arches {
+    list-style: none;
+    margin-left: 20px;
+}
+
+div#features {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    float: left;
+}
+
+div#features ul {
+    list-style: none;
+    padding: 5px;
+}
+
+/************/
+/*  Footer  */
+/************/
+#footer {
+    margin-top: 10px;
+    margin-bottom: 0;
+    background-color: #999;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #666;
+}
+
+/*****************/
+/*  Django forms */
+/*****************/
+ul.errorlist {
+    list-style: none;
+    font-weight: bold;
+    color: red;
+}
+
+form.search {
+   padding: 0 20px; 
+   color: #666;
+}
+
+form.search label {
+    font-weight: bold;
+}
+
+form.search input.submit {
+    margin: 5px 0;
+}
+
+div.field_wrapper {
+}
+
+div.field_wrapper ul {
+    list-style: none;
+}

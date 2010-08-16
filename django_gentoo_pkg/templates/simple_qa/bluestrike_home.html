@@ -1,0 +1,24 @@
+{% extends "simple_qa/bluestrike_base.html" %}
+
+{% block a_home %}
+<a href="{{ base_url }}" class="selected">Home</a>
+{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Gentoo linux QA website</h2>
+<p>This is an online interface to the <a href="http://www.pkgcore.org">pkgcore</a> PMS (package management system).</p>
+<div id="features">
+    <h3>Features</h3>
+    <ul>
+        <li>Search the QA report database: 
+            <a href="{{ search_url }}">go there &#62;&#62;</a>
+        </li>
+        <li>Use the more complex search function: 
+            <a href="{{ search_url }}advanced">go there &#62;&#62;</a>
+        </li>
+        <li>Browse the QA database by architecture: 
+            <a href="{{ reports_url }}">go there &#62;&#62;</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

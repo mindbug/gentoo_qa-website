@@ -11,22 +11,26 @@ from django_gentoo_pkg.simple_qa.forms import QAReportForm
 # Notes, if using MySQL as the database backend, substitute icontains for
 # search in the QuerySet calls. It is allegedly much faster due to indexing.
 
-def welcome(request):
-    return render_to_response('simple_qa/welcome.html', 
+def home(request):
+    return_dict = {}
+    return_dict['menu_arches'] = get_arches()
+    return render_to_response('simple_qa/bluestrike_home.html', return_dict, 
         context_instance=RequestContext(request))
 
 
 def report_detail(request, report_id):
     return_dict = {}
+    return_dict['menu_arches'] = get_arches()
     report = QAReport.objects.get(id__iexact=report_id)
     return_dict['qareport'] = report
-    return render_to_response('simple_qa/qareport_detail.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_detail.html', return_dict, 
                               context_instance=RequestContext(request))
 
 
 def search_advanced(request):
     # Returns a list of QAReport objects matching the form query.
     return_dict = {}
+    return_dict['menu_arches'] = get_arches()
 
     if request.method == 'GET':
         form = AdvancedSearch(request.GET)
@@ -93,23 +97,27 @@ def search_advanced(request):
                 pass
             return_dict['query_url'] = query_dict.urlencode()
 
-        else:
+        else: # Form is not valid.
             pass
 
-        return_dict['form'] = form
+        if form.is_bound:
+            return_dict['form'] = form
+        else:
+            return_dict['form'] = AdvancedSearch()
 
     elif request.method == 'POST':
         pass
     else:
         return_dict['form'] = AdvancedSearch()
 
-    return render_to_response('simple_qa/search.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_search.html', return_dict, 
                               context_instance=RequestContext(request))
 
 
 def search(request):
     # Returns a list of QAReport objects matching the form query.
     return_dict = {}
+    return_dict['menu_arches'] = get_arches()
 
     if request.method == 'GET':
         form = SimpleSearch(request.GET)
@@ -147,10 +155,10 @@ def search(request):
             except (EmptyPage, InvalidPage):
                 result_page = paginator.page(paginator.num_pages)
 
-            return_dict = {'result_message': result_message,
-                           'result_page': result_page,
-                           'query_string': query_string,
-                           'form': form}
+            return_dict['result_message'] = result_message
+            return_dict['result_page'] = result_page
+            return_dict['query_string'] = query_string
+            return_dict['form'] = form
 
             query_dict = request.GET.copy()
             try:
@@ -160,18 +168,20 @@ def search(request):
             return_dict['query_url'] = query_dict.urlencode()
 
         else:
-            return_dict = {'result_message': "The entry is not valid.",
-                           'form': form}
+            return_dict['result_message'] = (
+                "No results to display. :(")
+            return_dict['form'] = form
     else:
         form = SimpleSearch()
-        return_dict = {'form': form}
+        return_dict['form'] = form
 
-    return render_to_response('simple_qa/search.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_search.html', return_dict, 
         context_instance=RequestContext(request))
 
 
 def reports(request, arch, category=None, package=None):
     return_dict = {}
+    return_dict['menu_arches'] = get_arches()
     q = Q(arch__icontains='n/a')
     reports = QAReport.objects.exclude(q)
     # We want objects which have 'arch' in their arch field, surrounded by
@@ -200,22 +210,25 @@ def reports(request, arch, category=None, package=None):
 
     return_dict['result_page'] = result_page
     return_dict['arch'] = arch
-    return render_to_response('simple_qa/listing.html', return_dict,
+    return render_to_response('simple_qa/bluestrike_reports.html', return_dict,
         context_instance=RequestContext(request))
 
 
 def arches(request):
     return_dict = {}
-    q = (Q(arch__icontains='n/a') | Q(arch__icontains=' '))
-    reports = QAReport.objects.exclude(q)
-    arches = sorted(set(reports.values_list('arch', flat=True)))
+    #q = (Q(arch__icontains='n/a') | Q(arch__icontains=' '))
+    #reports = QAReport.objects.exclude(q)
+    #arches = sorted(set(reports.values_list('arch', flat=True)))
+    arches = get_arches()
     return_dict['arches'] = arches
-    return render_to_response('simple_qa/arches.html', return_dict, 
+    return_dict['menu_arches'] = arches
+    return render_to_response('simple_qa/bluestrike_arches.html', return_dict, 
         context_instance=RequestContext(request))
 
 
 def search_model(request):
     return_dict = {}
+    return_dict['menu_arches'] = get_arches()
     if request.method == 'GET':
         form = QAReportForm(request.GET)
         if form.is_valid():
@@ -226,5 +239,12 @@ def search_model(request):
         pass
     else:
         return_dict['form'] = QAReportForm()
-    return render_to_response('simple_qa/search.html', return_dict, 
+    return render_to_response('simple_qa/bluestrike_search.html', return_dict, 
                               context_instance=RequestContext(request))
+
+
+def get_arches():
+    q = (Q(arch__icontains='n/a') | Q(arch__icontains=' '))
+    reports = QAReport.objects.exclude(q)
+    arches = sorted(set(reports.values_list('arch', flat=True)))
+    return arches
